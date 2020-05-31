@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://javaee.github.io/metro-jax-ws/doc/user-guide/ch03.html -->
+<endpoints
+	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime"
+	xmlns:javaee="http://java.sun.com/xml/ns/javaee" version="2.0">
+	<!--  
+		name: Name of the endpoint.
+		wsdl: Primary wsdl file location in the WAR file. If this isn't specified, JAX-WS will create and publish a new WSDL. 
+		service: QName of WSDL service.
+		port: QName of WSDL port. 
+		implementation: Endpoint implementation class name. 
+		url-pattern: Should match <url-pattern> in web.xml
+		binding: Binding id defined in the JAX-WS API. The possible values are:
+						"http://schemas.xmlsoap.org/wsdl/soap/http"
+						"http://www.w3.org/2003/05/soap/bindings/HTTP/"
+		If omitted, it is considered SOAP1.1 binding.
+		Enables MTOM optimization. true or false. Default is false.
+		When the service is developed from Java, it is recommended to omit the wsdl, service and port attributes.
+	-->
+	<endpoint name="IntimationWS"
+		interface="com.icici.xpress_connect.ws.ecollection.IntimationPort"
+		implementation="com.icici.xpress_connect.ws.ecollection.impl.IntimationPortImpl"
+		wsdl="WEB-INF/wsdl/intimation.wsdl"
+		service="{http://www.icicibank.com/ws/intimation}IntimationSOAP11WS"
+		port="{http://www.icicibank.com/ws/intimation}IntimationPort"
+		url-pattern="/ws/eCollection/ACME"/>
+</endpoints>

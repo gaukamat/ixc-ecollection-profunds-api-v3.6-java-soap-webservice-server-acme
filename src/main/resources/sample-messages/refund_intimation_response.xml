@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refund_intimation_notification_acknowledgment>
+	<api_version>1.0</api_version>
+	<response_id>76B72B4F-31E1-4915-81E8-A85AE29955AE</response_id>
+	<response_datetime>2019-11-26T12:28:56.321+05:30</response_datetime>
+	<request_id>7C615D36-1529-4B0C-A1E6-C5C67D5FA353</request_id>
+	<request_datetime>2019-11-26T12:28:56.321+05:30</request_datetime>
+	<parent_request_id>30F14673-BF37-4C55-89E3-AD7ED78BFB14</parent_request_id>
+	<parent_request_datetime>2019_11_26T12:28:56.321+05:30</parent_request_datetime>
+	<channel_id>Profunds</channel_id>
+	<sender_system_id>Profunds</sender_system_id>
+	<sender_system_user_id>raman.kumar@icicibank.com</sender_system_user_id>
+	<sender_system_user_id_type>email</sender_system_user_id_type>
+	<request_priority>1</request_priority>
+	<resent_indicator>true</resent_indicator>
+	<original_request_id>131280011</original_request_id>
+	<original_request_datetime>2019-11-26T12:28:56.321+05:30</original_request_datetime>
+	<original_channel_id>Profunds</original_channel_id>
+	<original_sender_system_id>profunds</original_sender_system_id>
+	<original_sender_system_user_id>raman.kumar@icicibank.com</original_sender_system_user_id>
+	<original_sender_system_user_id_type>email</original_sender_system_user_id_type>
+	<original_request_priority>1</original_request_priority>
+	<test_indicator>false</test_indicator>
+	<product_type>eCollection/mis</product_type>
+	<message_type>intimation</message_type>
+	<operation_name>intimate</operation_name>
+	<client_code>ARNC</client_code>
+	<virtual_account_number>ARNCMJOM104</virtual_account_number>
+	<transaction_amount>110</transaction_amount>
+	<currency_code>INR</currency_code>
+	<payment_mode>NEFT</payment_mode>
+	<transaction_id>N266190934399380</transaction_id>
+	<transaction_id_type>UTR</transaction_id_type>
+	<transaction_datetime>2019-11-26T11:48:46.331+05:30</transaction_datetime>
+	<sender_name>RAMAN KUMAR</sender_name>
+	<sender_mobile_communication_number>+910000000000</sender_mobile_communication_number>
+	<sender_account_number>601270000750</sender_account_number>
+	<sender_bank_name>HDFC</sender_bank_name>
+	<sender_ifsc_code>HDFC0000001</sender_ifsc_code>
+	<client_account_name>RAMAN KUMAR</client_account_name>
+	<client_mobile_communication_number>+910000000000</client_mobile_communication_number>
+	<client_account_number>601270000750</client_account_number>
+	<narration_1>string</narration_1>
+	<narration_2>string</narration_2>
+	<informational_message>string</informational_message>
+	<external_system_reference_1>string</external_system_reference_1>
+	<external_system_reference_2>string</external_system_reference_2>
+	<remitter_account_number>string</remitter_account_number>
+	<cms_reference_number>string</cms_reference_number>
+	<refund_payment_status>P</refund_payment_status>
+	<refund_code>string</refund_code>
+	<refund_rejection_code>string</refund_rejection_code>
+	<client_data_ext>
+	</client_data_ext>
+	<completion_code>0</completion_code>
+	<reason_code>XCA00001E</reason_code>
+	<message>Sender Account Number and Sender Name mismatch.</message>
+	<retry_indicator>true</retry_indicator>
+	<retry_after_datetime>2019-11-26T12:28:56.321+05:30</retry_after_datetime>
+	<retry_after_interval>600</retry_after_interval>
+</refund_intimation_notification_acknowledgment>
