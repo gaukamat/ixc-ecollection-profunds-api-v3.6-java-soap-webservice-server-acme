@@ -1,6 +1,9 @@
+
 package com.icici.xpress_connect.ws.ecollection.impl;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.xml.namespace.QName;
@@ -19,21 +22,26 @@ public class IntimationPortMessageHandler implements SOAPHandler<SOAPMessageCont
 		
 		Boolean outBoundProperty = (Boolean) context
                 .get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
-		
+		Map<String, List<String>> headers = null;
 		System.out.println("Outbound Message ? " + outBoundProperty);
 		try {
 			if(outBoundProperty) {
 				System.out.println("[IBM]: Outbound message: ");
+		         headers = (Map<String, List<String>>) context.get(MessageContext.HTTP_RESPONSE_HEADERS);
 			}
 			else {
 				System.out.println("[IBM]: Inbound message: ");
+		         headers = (Map<String, List<String>>) context.get(MessageContext.HTTP_REQUEST_HEADERS);
 			}
-			
+	       
+	         System.out.println("[IBM]: HTTP Headers : " + headers);
+	         
 			SOAPMessage message = context.getMessage();
 			
 			System.out.println("[IBM]: \n");
 			message.writeTo(System.out);
 			System.out.println("\n[IBM]: \n");
+			
 		} 
 		catch (SOAPException | IOException e) {
 			e.printStackTrace();
