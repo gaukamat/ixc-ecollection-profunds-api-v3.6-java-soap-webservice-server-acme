@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.icicibank.com/api/acme-ext" 
+	xmlns:tns="http://www.icicibank.com/api/acme-ext" elementFormDefault="qualified">
+
+	<xsd:element name="Message-Checksum-Algo" type="xsd:string"/>
+	<xsd:element name="Message-Checksum" type="xsd:string"/>
+
+	<xsd:element name="API-UserId-Token" type="xsd:string" />
+	<xsd:element name="API-Access-Token" type="xsd:string" />
+
+	<xsd:group name="API-Authentication-FieldsGroup">
+		<xsd:sequence>
+			<xsd:element ref="tns:API-UserId-Token" />
+			<xsd:element ref="tns:API-Access-Token" />
+		</xsd:sequence>
+	</xsd:group>
+	
+	<xsd:element name="API-Authorization-Header">
+		<xsd:complexType>
+			<xsd:group ref="tns:API-Authentication-FieldsGroup"/>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:group name="API-Integrity-FieldGroup">
+		<xsd:sequence>
+			<xsd:element ref="tns:Message-Checksum-Algo" minOccurs="0"/>
+			<xsd:element ref="tns:Message-Checksum"/>
+		</xsd:sequence>
+	</xsd:group>
+	
+	<xsd:element name="API-Integrity-Header">
+		<xsd:complexType>
+			<xsd:group ref="tns:API-Integrity-FieldGroup"/>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

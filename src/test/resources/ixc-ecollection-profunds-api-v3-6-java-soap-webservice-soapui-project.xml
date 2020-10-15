@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="95438fc6-2e02-41b5-b25a-72baed00fd5d" activeEnvironment="Default" name="eCollection-Configrity-Mock-WebServices" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="1c076709-343a-4671-a558-bd8aec0010aa" wsaVersion="NONE" name="IntimationSOAP11HTTPBinding" type="wsdl" bindingName="{http://www.icicibank.com/ws/intimation}IntimationSOAP11HTTPBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-0.0.1-SNAPSHOT/ws/eCollection/ACME?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-0.0.1-SNAPSHOT/ws/eCollection/ACME?wsdl"><con:part><con:url>http://localhost:8080/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-0.0.1-SNAPSHOT/ws/eCollection/ACME?wsdl</con:url><con:content><![CDATA[<!--Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.10 svn-revision#919b322c92f13ad085a933e8dd6dd35d4947364b.-->
+<wsdl:definitions name="IntimationWS" targetNamespace="http://www.icicibank.com/ws/intimation" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.icicibank.com/ws/intimation" xmlns:api="http://www.icicibank.com/api/acme" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.icicibank.com/api/acme">
+      <xsd:include schemaLocation="http://localhost:8080/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-0.0.1-SNAPSHOT/ws/eCollection/ACME?xsd=1"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IntimationRequest">
+    <wsdl:part element="api:intimation_request" name="IntimationRequest"/>
+  </wsdl:message>
+  <wsdl:message name="IntimationResponse">
+    <wsdl:part element="api:intimation_response" name="IntimationResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="IntimationPort">
+    <wsdl:operation name="Intimate">
+      <wsdl:input message="tns:IntimationRequest"/>
+      <wsdl:output message="tns:IntimationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IntimationSOAP11HTTPBinding" type="tns:IntimationPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Intimate">
+      <soap:operation soapAction="http://www.icicibank.com/api/acme/intimation"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IntimationSOAP11WS">
+    <wsdl:port binding="tns:IntimationSOAP11HTTPBinding" name="IntimationSOAP11WSPort">
+      <soap:address location="http://localhost:8080/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-0.0.1-SNAPSHOT/ws/eCollection/ACME"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-0.0.1-SNAPSHOT/ws/eCollection/ACME?xsd=1</con:url><con:content><![CDATA[<!--Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.10 svn-revision#919b322c92f13ad085a933e8dd6dd35d4947364b.-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="request_priority_type">
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="1"/>
+      <xsd:enumeration value="2"/>
+      <xsd:enumeration value="3"/>
+      <xsd:enumeration value="4"/>
+      <xsd:enumeration value="5"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="api_version" type="xsd:string"/>
+  <xsd:element name="request_id" type="xsd:string"/>
+  <xsd:element name="request_datetime" type="xsd:dateTime"/>
+  <xsd:element name="request_priority" type="request_priority_type"/>
+  <xsd:element name="parent_request_id" type="xsd:string"/>
+  <xsd:element name="parent_request_datetime" type="xsd:dateTime"/>
+  <xsd:element name="sender_system_user_id" type="xsd:string"/>
+  <xsd:element name="sender_system_user_id_type" type="xsd:string"/>
+  <xsd:element name="resent_indicator" type="xsd:boolean"/>
+  <xsd:element name="original_request_id" type="xsd:string"/>
+  <xsd:element name="original_request_datetime" type="xsd:dateTime"/>
+  <xsd:element name="original_channel_id" type="xsd:string"/>
+  <xsd:element name="original_sender_system_id" type="xsd:string"/>
+  <xsd:element name="original_request_priority" type="request_priority_type"/>
+  <xsd:element name="original_sender_system_user_id" type="xsd:string"/>
+  <xsd:element name="original_sender_system_user_id_type" type="xsd:string"/>
+  <xsd:element name="sender_system_id" type="xsd:string"/>
+  <xsd:element name="channel_id" type="xsd:string"/>
+  <xsd:element name="test_indicator" type="xsd:boolean"/>
+  <xsd:element name="client_code" type="xsd:string"/>
+  <xsd:element name="virtual_account_number" type="xsd:string"/>
+  <xsd:element name="transaction_id" type="xsd:string"/>
+  <xsd:simpleType name="transaction_id_type_type">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="UTR"/>
+      <xsd:enumeration value="RRN"/>
+      <xsd:enumeration value="TRANID"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="transaction_id_type" type="transaction_id_type_type"/>
+  <xsd:element name="transaction_datetime" type="xsd:dateTime"/>
+  <xsd:element name="transaction_amount" type="xsd:decimal"/>
+  <xsd:element name="currency_code" type="xsd:string"/>
+  <xsd:simpleType name="payment_mode_type">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NEFT"/>
+      <xsd:enumeration value="RTGS"/>
+      <xsd:enumeration value="IMPS"/>
+      <xsd:enumeration value="FT"/>
+      <xsd:enumeration value="UTR"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="payment_mode" type="payment_mode_type"/>
+  <xsd:element name="sender_name" type="xsd:string"/>
+  <xsd:element name="sender_mobile_communication_number" type="xsd:string"/>
+  <xsd:element name="sender_account_number" type="xsd:string"/>
+  <xsd:element name="sender_bank_name" type="xsd:string"/>
+  <xsd:element name="sender_ifsc_code" type="xsd:string"/>
+  <xsd:element name="client_account_name" type="xsd:string"/>
+  <xsd:element name="client_mobile_communication_number" type="xsd:string"/>
+  <xsd:element name="client_account_number" type="xsd:string"/>
+  <xsd:element name="client_bank_name" type="xsd:string"/>
+  <xsd:element name="client_ifsc_code" type="xsd:string"/>
+  <xsd:element name="narration_1" type="xsd:string"/>
+  <xsd:element name="narration_2" type="xsd:string"/>
+  <xsd:element name="informational_message" type="xsd:string"/>
+  <xsd:element name="external_system_reference_1" type="xsd:string"/>
+  <xsd:element name="external_system_reference_2" type="xsd:string"/>
+  <xsd:element name="client_remarks" type="xsd:string"/>
+  <xsd:complexType name="client_data_ext_type">
+    <xsd:sequence>
+      <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="client_data_ext" type="client_data_ext_type"/>
+  <xsd:element name="response_id" type="xsd:string"/>
+  <xsd:element name="response_datetime" type="xsd:dateTime"/>
+  <xsd:simpleType name="completion_code_type">
+    <xsd:restriction base="xsd:integer">
+      <xsd:enumeration value="0"/>
+      <!--Successful-->
+      <xsd:enumeration value="1"/>
+      <!--Warning-->
+      <xsd:enumeration value="2"/>
+      <!--Error-->
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="completion_code" type="completion_code_type"/>
+  <xsd:element name="reason_code" type="xsd:string"/>
+  <xsd:element name="message" type="xsd:string"/>
+  <xsd:element name="retry_indicator" type="xsd:boolean"/>
+  <xsd:element name="retry_after_interval" type="xsd:integer"/>
+  <xsd:element name="retry_after_datetime" type="xsd:dateTime"/>
+  <xsd:element name="intimation_request" type="intimation_requestType"/>
+  <xsd:element name="intimation_response" type="intimation_responseType"/>
+  <xsd:complexType name="intimation_requestType">
+    <xsd:sequence>
+      <xsd:element ref="api_version"/>
+      <xsd:element ref="request_id"/>
+      <xsd:element ref="request_datetime"/>
+      <xsd:element ref="parent_request_id" minOccurs="0"/>
+      <xsd:element ref="parent_request_datetime" minOccurs="0"/>
+      <xsd:element ref="channel_id" minOccurs="0"/>
+      <xsd:element ref="sender_system_id" minOccurs="0"/>
+      <xsd:element ref="sender_system_user_id" minOccurs="0"/>
+      <xsd:element ref="sender_system_user_id_type" minOccurs="0"/>
+      <xsd:element ref="request_priority" minOccurs="0"/>
+      <xsd:element ref="resent_indicator" minOccurs="0"/>
+      <xsd:element ref="original_request_id" minOccurs="0"/>
+      <xsd:element ref="original_request_datetime" minOccurs="0"/>
+      <xsd:element ref="original_channel_id" minOccurs="0"/>
+      <xsd:element ref="original_sender_system_id" minOccurs="0"/>
+      <xsd:element ref="original_sender_system_user_id" minOccurs="0"/>
+      <xsd:element ref="original_sender_system_user_id_type" minOccurs="0"/>
+      <xsd:element ref="original_request_priority" minOccurs="0"/>
+      <xsd:element ref="test_indicator" minOccurs="0"/>
+      <xsd:element ref="client_code"/>
+      <xsd:element ref="virtual_account_number"/>
+      <xsd:element ref="transaction_amount"/>
+      <xsd:element ref="currency_code"/>
+      <xsd:element ref="payment_mode"/>
+      <xsd:element ref="transaction_id"/>
+      <xsd:element ref="transaction_id_type"/>
+      <xsd:element ref="transaction_datetime"/>
+      <xsd:element ref="sender_name"/>
+      <xsd:element ref="sender_mobile_communication_number" minOccurs="0"/>
+      <xsd:element ref="sender_account_number"/>
+      <xsd:element ref="sender_bank_name" minOccurs="0"/>
+      <xsd:element ref="sender_ifsc_code"/>
+      <xsd:element ref="client_account_name" minOccurs="0"/>
+      <xsd:element ref="client_mobile_communication_number" minOccurs="0"/>
+      <xsd:element ref="client_account_number"/>
+      <xsd:element ref="client_bank_name" minOccurs="0"/>
+      <xsd:element ref="client_ifsc_code" minOccurs="0"/>
+      <xsd:element ref="narration_1" minOccurs="0"/>
+      <xsd:element ref="narration_2" minOccurs="0"/>
+      <xsd:element ref="informational_message" minOccurs="0"/>
+      <xsd:element ref="external_system_reference_1" minOccurs="0"/>
+      <xsd:element ref="external_system_reference_2" minOccurs="0"/>
+      <xsd:element ref="client_remarks" minOccurs="0"/>
+      <xsd:element ref="client_data_ext" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="intimation_responseType">
+    <xsd:sequence>
+      <xsd:element ref="api_version"/>
+      <xsd:element ref="response_id"/>
+      <xsd:element ref="response_datetime"/>
+      <xsd:element ref="request_id"/>
+      <xsd:element ref="request_datetime"/>
+      <xsd:element ref="parent_request_id" minOccurs="0"/>
+      <xsd:element ref="parent_request_datetime" minOccurs="0"/>
+      <xsd:element ref="channel_id" minOccurs="0"/>
+      <xsd:element ref="sender_system_id" minOccurs="0"/>
+      <xsd:element ref="sender_system_user_id" minOccurs="0"/>
+      <xsd:element ref="sender_system_user_id_type" minOccurs="0"/>
+      <xsd:element ref="request_priority" minOccurs="0"/>
+      <xsd:element ref="resent_indicator" minOccurs="0"/>
+      <xsd:element ref="original_request_id" minOccurs="0"/>
+      <xsd:element ref="original_request_datetime" minOccurs="0"/>
+      <xsd:element ref="original_channel_id" minOccurs="0"/>
+      <xsd:element ref="original_sender_system_id" minOccurs="0"/>
+      <xsd:element ref="original_sender_system_user_id" minOccurs="0"/>
+      <xsd:element ref="original_sender_system_user_id_type" minOccurs="0"/>
+      <xsd:element ref="original_request_priority" minOccurs="0"/>
+      <xsd:element ref="test_indicator" minOccurs="0"/>
+      <xsd:element ref="client_code" minOccurs="0"/>
+      <xsd:element ref="virtual_account_number" minOccurs="0"/>
+      <xsd:element ref="transaction_amount" minOccurs="0"/>
+      <xsd:element ref="currency_code" minOccurs="0"/>
+      <xsd:element ref="payment_mode" minOccurs="0"/>
+      <xsd:element ref="transaction_id" minOccurs="0"/>
+      <xsd:element ref="transaction_id_type" minOccurs="0"/>
+      <xsd:element ref="transaction_datetime" minOccurs="0"/>
+      <xsd:element ref="sender_name" minOccurs="0"/>
+      <xsd:element ref="sender_mobile_communication_number" minOccurs="0"/>
+      <xsd:element ref="sender_account_number" minOccurs="0"/>
+      <xsd:element ref="sender_bank_name" minOccurs="0"/>
+      <xsd:element ref="sender_ifsc_code" minOccurs="0"/>
+      <xsd:element ref="client_account_name" minOccurs="0"/>
+      <xsd:element ref="client_mobile_communication_number" minOccurs="0"/>
+      <xsd:element ref="client_account_number" minOccurs="0"/>
+      <xsd:element ref="client_bank_name" minOccurs="0"/>
+      <xsd:element ref="client_ifsc_code" minOccurs="0"/>
+      <xsd:element ref="narration_1" minOccurs="0"/>
+      <xsd:element ref="narration_2" minOccurs="0"/>
+      <xsd:element ref="informational_message" minOccurs="0"/>
+      <xsd:element ref="external_system_reference_1" minOccurs="0"/>
+      <xsd:element ref="external_system_reference_2" minOccurs="0"/>
+      <xsd:element ref="client_data_ext" minOccurs="0"/>
+      <xsd:element ref="completion_code"/>
+      <xsd:element ref="reason_code" minOccurs="0"/>
+      <xsd:element ref="message" minOccurs="0"/>
+      <xsd:element ref="retry_indicator" minOccurs="0"/>
+      <xsd:element ref="retry_after_datetime" minOccurs="0"/>
+      <xsd:element ref="retry_after_interval" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-0.0.1-SNAPSHOT/ws/eCollection/ACME</con:endpoint><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint></con:endpoints><con:operation id="37f8f6d2-5182-4b2a-9fda-b73aba99a4aa" isOneWay="false" action="http://www.icicibank.com/api/acme/intimation" name="Intimate" bindingOperationName="Intimate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3052f472-18ac-4bb8-b032-723b70e1f46f" name="First Attempt"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="7e142c00-ccdd-4341-b011-a604eb6c6203" name="Resent Request"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>80EEE05D-FC29-461C-AC26-AB91B059D60C</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:04.644+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:original_request_id>5523BD71-26CB-48BF-9345-3450563A70A7</acme:original_request_id>
+	   <acme:original_request_datetime>2020-10-23T15:55:04.644</acme:original_request_datetime>
+	   <acme:original_sender_system_id>Profunds</acme:original_sender_system_id>
+	   <acme:original_sender_system_user_id>prachi.j@icicibank.com</acme:original_sender_system_user_id>
+	   <acme:original_request_priority>4</acme:original_request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202010231</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:54.644</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+      </acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c4584a4a-34e8-4067-80c8-123cad6626f0" name="First Attempt-Transaction Accepted"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>23D4BB13-AA1D-4770-B074-967702E33A0C</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:04.773+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202020000441</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:54.773</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+	</acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>	]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="a02189f8-0626-4680-8297-9637043b1aca" name="First Attempt-Transaction Rejected"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>E19BF330-8F89-4E00-AB20-0FC381BF2CA7</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:04.927+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202020000442</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:54.927</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+	</acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c64dee72-741a-4f05-b268-405f43776b2d" name="Resent Request-Transaction Accepted"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>AE5C8E21-0500-4E7D-A0CB-B9C725CBF613</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:05.083+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:original_request_id>CC772D03-6A81-4543-9A60-C204CA35E8B7</acme:original_request_id>
+	   <acme:original_request_datetime>2020-10-23T15:55:05.083</acme:original_request_datetime>
+	   <acme:original_sender_system_id>Profunds</acme:original_sender_system_id>
+	   <acme:original_sender_system_user_id>prachi.j@icicibank.com</acme:original_sender_system_user_id>
+	   <acme:original_request_priority>4</acme:original_request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202020000441</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:55.083</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+      </acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="79e6d0cf-ed8e-4fac-a26f-a395fdd067fd" name="Resent Request-Transaction Rejected"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>E8682AF7-2410-44FD-8C2B-D05F52E20D26</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:05.247+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:original_request_id>1A129C31-9838-469F-8D65-404CD60FE6F5</acme:original_request_id>
+	   <acme:original_request_datetime>2020-10-23T15:55:05.247</acme:original_request_datetime>
+	   <acme:original_sender_system_id>Profunds</acme:original_sender_system_id>
+	   <acme:original_sender_system_user_id>prachi.j@icicibank.com</acme:original_sender_system_user_id>
+	   <acme:original_request_priority>4</acme:original_request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202020000442</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:55.248</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+      </acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="5960f5d7-e0a9-4bc1-9b77-7d993948461f" name="First Attempt-Internal Server Error"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>EAF624A4-B0FB-41AB-8FDA-C44DEDDDF488</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:05.375+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202020000500</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:55.377</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+	</acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="cc67c8d0-8b70-458e-8248-207e4a41dee7" name="Resent Request-Internal Server Error"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>885D5C20-F0B2-4273-92D8-C48B16854597</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:05.490+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:original_request_id>BB886F22-4BEA-44AA-9E3B-3C1A21C9E093</acme:original_request_id>
+	   <acme:original_request_datetime>2020-10-23T15:55:05.490</acme:original_request_datetime>
+	   <acme:original_sender_system_id>Profunds</acme:original_sender_system_id>
+	   <acme:original_sender_system_user_id>prachi.j@icicibank.com</acme:original_sender_system_user_id>
+	   <acme:original_request_priority>4</acme:original_request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202020000500</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:55.492</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+      </acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c98fa52a-46c5-41ab-9f9f-c4613cbdd369" name="First Attempt-Service Unavailable"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>54DBE7D2-7BEE-4498-9BA4-5F6A0707BDB1</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:05.621+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202020000503</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:55.621</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+	</acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>	]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call><con:call id="2f4466f3-e435-4f44-ab51-78211315226f" name="Resent Request-Service Unavailable"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9936/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/eCollection/ACME</con:endpoint><con:request><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <acme:intimation_request>
+	   <acme:api_version>1.2.0</acme:api_version>
+	   <acme:request_id>125E4CD0-2248-428B-BD1E-6B5CA0AC7C11</acme:request_id>
+	   <acme:request_datetime>2020-10-23T16:55:05.740+05:30</acme:request_datetime>
+	   <acme:sender_system_id>Profunds</acme:sender_system_id>
+	   <acme:sender_system_user_id>raman.kumar@icicibank.com</acme:sender_system_user_id>
+	   <acme:request_priority>3</acme:request_priority>
+	   <acme:original_request_id>207F635B-4FDF-499A-8DAA-06B063570437</acme:original_request_id>
+	   <acme:original_request_datetime>2020-10-23T15:55:05.740</acme:original_request_datetime>
+	   <acme:original_sender_system_id>Profunds</acme:original_sender_system_id>
+	   <acme:original_sender_system_user_id>prachi.j@icicibank.com</acme:original_sender_system_user_id>
+	   <acme:original_request_priority>4</acme:original_request_priority>
+	   <acme:test_indicator>false</acme:test_indicator>
+	   <acme:client_code>ACME</acme:client_code>
+	   <acme:virtual_account_number>ADANX031192399</acme:virtual_account_number>
+	   <acme:transaction_amount>28800.00</acme:transaction_amount>
+	   <acme:currency_code>INR</acme:currency_code>
+	   <acme:payment_mode>NEFT</acme:payment_mode>
+	   <acme:transaction_id>202020000503</acme:transaction_id>
+	   <acme:transaction_id_type>UTR</acme:transaction_id_type>
+	   <acme:transaction_datetime>2020-10-23T16:49:55.740</acme:transaction_datetime>
+	   <acme:sender_name>Tryion Lannister</acme:sender_name>
+	   <acme:sender_account_number>0710107844276</acme:sender_account_number>
+	   <acme:sender_bank_name>SBI</acme:sender_bank_name>
+	   <acme:sender_ifsc_code>SBIN0000710</acme:sender_ifsc_code>
+	   <acme:client_account_name>Adani Petrochemicals</acme:client_account_name>
+	   <acme:client_account_number>0081202280775</acme:client_account_number>
+	   <acme:client_bank_name>ICICI</acme:client_bank_name>
+	   <acme:client_ifsc_code>ICIC0000008</acme:client_ifsc_code>
+	   <acme:narration_1>Narration 1</acme:narration_1>
+	   <acme:narration_2>Narration 2</acme:narration_2>
+	   <acme:informational_message>A quick brown fox jumped over the lazy dog !</acme:informational_message>
+      </acme:intimation_request>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.icicibank.com/api/acme/intimation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

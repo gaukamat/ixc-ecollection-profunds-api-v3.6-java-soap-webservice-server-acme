@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.icicibank.com/ws/configrity/intimation"
+	xmlns:tns="http://www.icicibank.com/ws/configrity/intimation"
+	xmlns:api="http://www.icicibank.com/api/acme"
+	xmlns:wrap="http://www.icicibank.com/api/acme-wrap"
+	xmlns:configrity="http://www.icicibank.com/api/acme/configrity"
+	xmlns:configrity-compact="http://www.icicibank.com/api/acme/configrity/compact"
+	name="IntimationConfigrityWS" >
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://www.icicibank.com/api/acme" schemaLocation="../xsd/intimation.xsd" />
+			<xsd:import namespace="http://www.icicibank.com/api/acme-wrap" schemaLocation="../xsd/intimation-wrap.xsd" />
+			<!-- 
+			<xsd:import namespace="http://www.icicibank.com/api/acme/configrity" schemaLocation="../xsd/intimation-configrity.xsd" /> 
+			-->
+			<xsd:import namespace="http://www.icicibank.com/api/acme/configrity/compact" schemaLocation="../xsd/intimation-configrity-compact.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="IntimationRequest">
+		<wsdl:part element="api:intimation_request" name="IntimationRequest" />
+	</wsdl:message>
+	<wsdl:message name="IntimationResponse">
+		<wsdl:part element="api:intimation_response" name="IntimationResponse" />
+	</wsdl:message>
+	<wsdl:message name="IntimationRequestWrap">
+		<wsdl:part element="wrap:intimation_request" name="IntimationRequestWrap" />
+	</wsdl:message>
+	<wsdl:message name="IntimationResponseWrap">
+		<wsdl:part element="wrap:intimation_response" name="IntimationResponseWrap" />
+	</wsdl:message>
+	<wsdl:message name="IntimationRequestWrapPayloadCompact">
+		<wsdl:part element="configrity-compact:secure_request" name="IntimationRequestWrapPayloadCompact" />
+	</wsdl:message>
+	<wsdl:message name="IntimationResponseWrapPayloadCompact">
+		<wsdl:part element="configrity-compact:secure_response" name="IntimationResponseWrapPayloadCompact" />
+	</wsdl:message>
+	<wsdl:portType name="SimpleIntimationServicePort">
+		<!-- Simple implementation with optional Basic Authentication and / or Checksum Validation. -->
+		<wsdl:operation name="intimate">
+			<wsdl:input message="tns:IntimationRequest" />
+			<wsdl:output message="tns:IntimationResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:portType name="WrapperIntimationServicePort">
+		<!-- Implementation requiring field-level encryption. Optional Basic Authentication and / or Checksum Validation. -->
+		<wsdl:operation name="intimate">
+			<wsdl:input message="tns:IntimationRequestWrap" />
+			<wsdl:output message="tns:IntimationResponseWrap" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:portType name="CompactV3IntimationServicePort">
+		<wsdl:operation name="intimate">
+			<wsdl:input message="tns:IntimationRequestWrapPayloadCompact" />
+			<wsdl:output message="tns:IntimationResponseWrapPayloadCompact" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SimpleIntimationServicePortSOAP11HTTPBinding" type="tns:SimpleIntimationServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="intimate">
+			<soap:operation soapAction="http://www.icicibank.com/api/acme/configrity/intimation" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="WrapperIntimationServicePortSOAP11HTTPBinding" type="tns:WrapperIntimationServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="intimate">
+			<soap:operation soapAction="http://www.icicibank.com/api/acme/configrity/intimation-wrapper" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:binding name="CompactV3IntimationServicePortSOAP11HTTPBinding" type="tns:CompactV3IntimationServicePort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="intimate">
+			<soap:operation soapAction="http://www.icicibank.com/api/acme/configrity/intimation-compact-v3" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="IntimationConfigritySOAP11WS">
+		<wsdl:port binding="tns:SimpleIntimationServicePortSOAP11HTTPBinding" name="SimpleIntimationConfigrityWS">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+		<wsdl:port binding="tns:WrapperIntimationServicePortSOAP11HTTPBinding" name="WrapperIntimationConfigrityWS">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+		<wsdl:port binding="tns:CompactV3IntimationServicePortSOAP11HTTPBinding" name="CompactV3IntimationConfigrityWS">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

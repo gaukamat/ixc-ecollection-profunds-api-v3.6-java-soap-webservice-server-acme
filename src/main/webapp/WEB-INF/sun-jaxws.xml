@@ -17,11 +17,28 @@
 		Enables MTOM optimization. true or false. Default is false.
 		When the service is developed from Java, it is recommended to omit the wsdl, service and port attributes.
 	-->
-	<endpoint name="IntimationWS"
-		interface="com.icici.xpress_connect.ws.ecollection.IntimationPort"
-		implementation="com.icici.xpress_connect.ws.ecollection.impl.IntimationPortImpl"
-		wsdl="WEB-INF/wsdl/intimation.wsdl"
-		service="{http://www.icicibank.com/ws/intimation}IntimationSOAP11WS"
-		port="{http://www.icicibank.com/ws/intimation}IntimationPort"
-		url-pattern="/ws/eCollection/ACME"/>
+	<endpoint name="SimpleIntimationConfigrityWS"
+		interface="com.icicibank.ws.configrity.intimation.SimpleIntimationServicePort"
+		implementation="com.icicibank.ws.configrity.intimation.impl.SimpleIntimationServicePortImpl"
+		wsdl="WEB-INF/wsdl/intimation-configrity.wsdl"
+		service="{http://www.icicibank.com/ws/configrity/intimation}IntimationConfigritySOAP11WS"
+		port="{http://www.icicibank.com/ws/configrity/intimation}SimpleIntimationConfigrityWS"
+		url-pattern="/ws/simple/eCollection/ACME"/>
+		
+		<endpoint name="WrapperIntimationConfigrityWS"
+		interface="com.icicibank.ws.configrity.intimation.WrapperIntimationServicePort"
+		implementation="com.icicibank.ws.configrity.intimation.impl.WrapperIntimationServicePortImpl"
+		wsdl="WEB-INF/wsdl/intimation-configrity.wsdl"
+		service="{http://www.icicibank.com/ws/configrity/intimation}IntimationConfigritySOAP11WS"
+		port="{http://www.icicibank.com/ws/configrity/intimation}WrapperIntimationConfigrityWS"
+		url-pattern="/ws/wrap/eCollection/ACME"/>
+
+		<endpoint name="CompactV3IntimationConfigrityWS"
+		interface="com.icicibank.ws.configrity.intimation.CompactV3IntimationServicePort"
+		implementation="com.icicibank.ws.configrity.intimation.impl.CompactV3IntimationServicePortImpl"
+		wsdl="WEB-INF/wsdl/intimation-configrity.wsdl"
+		service="{http://www.icicibank.com/ws/configrity/intimation}IntimationConfigritySOAP11WS"
+		port="{http://www.icicibank.com/ws/configrity/intimation}CompactV3IntimationConfigrityWS"
+		url-pattern="/ws/compact/eCollection/ACME"/>
+		
 </endpoints>

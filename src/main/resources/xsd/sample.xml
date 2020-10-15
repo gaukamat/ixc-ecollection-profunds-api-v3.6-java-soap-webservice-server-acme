@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:acme="http://www.icicibank.com/api/acme" xmlns:xtn="http://www.icicibank.com/api/acme-ext">
+	<soapenv:Header />
+	<soapenv:Body>
+		<acme:intimation_request>
+			<acme:api_version>${api_version}</acme:api_version>
+			<acme:request_id>${__changeCase(${__UUID},UPPER,)}</acme:request_id>
+			<acme:request_datetime>${__time(${iso8601_datetime_format},)}</acme:request_datetime>
+			<acme:sender_system_id>${sender_system_id}</acme:sender_system_id>
+			<acme:sender_system_user_id>${sender_system_user_id}</acme:sender_system_user_id>
+			<acme:request_priority>${request_priority}</acme:request_priority>
+			<acme:test_indicator>${__changeCase(${test_indicator},LOWER,)}</acme:test_indicator>
+			<acme:client_code>${client_code}</acme:client_code>
+			<acme:virtual_account_number>${virtual_account_number}</acme:virtual_account_number>
+			<acme:transaction_amount>39f6351c6db0cbd4c52a3fc68a5db9fc</acme:transaction_amount>
+			<acme:currency_code>${currency_code}</acme:currency_code>
+			<acme:payment_mode>${payment_mode}</acme:payment_mode>
+			<acme:transaction_id>39fe3f1c6faecbd4d1e857302c14726f</acme:transaction_id>
+			<acme:transaction_id_type>${transaction_id_type}</acme:transaction_id_type>
+			<acme:transaction_datetime>39fe3f1c70aec3c976c512b4a33638b40ce2ef5388ff09a4</acme:transaction_datetime>
+			<acme:sender_name>${sender_name}</acme:sender_name>
+			<acme:sender_account_number>3bf93c1c6caeccdca49829a2c5eb560f</acme:sender_account_number>
+			<acme:sender_bank_name>${sender_bank_name}</acme:sender_bank_name>
+			<acme:sender_ifsc_code>${sender_ifsc_code}</acme:sender_ifsc_code>
+			<acme:client_account_name>${client_account_name}</acme:client_account_name>
+			<acme:client_account_number>3bfe351d6faec9d694ee873818c83309</acme:client_account_number>
+			<acme:client_bank_name>${client_bank_name}</acme:client_bank_name>
+			<acme:client_ifsc_code>${client_ifsc_code}</acme:client_ifsc_code>
+			<acme:narration_1>${narration_1}</acme:narration_1>
+			<acme:narration_2>${narration_2}</acme:narration_2>
+			<acme:informational_message>${informational_message}</acme:informational_message>
+		</acme:intimation_request>
+	</soapenv:Body>
+</soapenv:Envelope>

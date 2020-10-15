@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.icicibank.com/api/acme/configrity"
+	xmlns:tns="http://www.icicibank.com/api/acme/configrity"
+	xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jxb:schemaBindings>
+				<jxb:package name="com.icicibank.ws.configrity.model.secure"></jxb:package>
+			</jxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:element name="key_sharing">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="static" />
+				<xsd:enumeration value="runtime" />
+				<xsd:enumeration value="STATIC" />
+				<xsd:enumeration value="RUNTIME" />
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+
+	<xsd:element name="encoding" default="base64">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="hex" />
+				<xsd:enumeration value="base64" />
+				<xsd:enumeration value="HEX" />
+				<xsd:enumeration value="BASE64" />
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:element>
+
+	<xsd:element name="data_encryption_cipher_algo_name"
+		type="xsd:string" />
+	<xsd:element name="data_encryption_cipher_mode"
+		type="xsd:string" />
+	<xsd:element name="data_encryption_cipher_padding"
+		type="xsd:string" />
+	<xsd:element name="data_encryption_cipher_iv"
+		type="xsd:string" />
+
+	<xsd:element name="secret_key_id" type="xsd:string" />
+	<xsd:element name="secret_key" type="xsd:string" />
+	<xsd:element name="public_key_id" type="xsd:string" />
+
+	<xsd:element name="secret_key_encryption_cipher_algo_name"
+		type="xsd:string" />
+	<xsd:element name="secret_key_encryption_cipher_mode"
+		type="xsd:string" />
+	<xsd:element name="secret_key_encryption_cipher_padding"
+		type="xsd:string" />
+	<xsd:element name="secret_key_encryption_cipher_iv"
+		type="xsd:string" />
+
+	<xsd:element name="clear_payload" type="xsd:string" />
+	<xsd:element name="encrypted_payload" type="xsd:string" />
+
+	<xsd:element name="secure_request" type="tns:secure_message_type" />
+	<xsd:element name="secure_response" type="tns:secure_message_type" />
+	<xsd:element name="secure_message" type="tns:secure_message_type" />
+
+	<xsd:complexType name="secure_message_type">
+		<xsd:sequence>
+			<xsd:element ref="tns:encoding" />
+			<xsd:element ref="tns:key_sharing" />
+			<xsd:element ref="tns:data_encryption_cipher_algo_name" />
+			<xsd:element ref="tns:data_encryption_cipher_mode" />
+			<xsd:element ref="tns:data_encryption_cipher_padding" />
+			<xsd:element ref="tns:data_encryption_cipher_iv" />
+			<xsd:choice>
+				<xsd:element ref="tns:secret_key_id" />
+				<xsd:sequence>
+					<xsd:element ref="tns:secret_key" />
+					<xsd:element ref="tns:public_key_id" />
+					<xsd:element
+						ref="tns:secret_key_encryption_cipher_algo_name" />
+					<xsd:element ref="tns:secret_key_encryption_cipher_mode" />
+					<xsd:element ref="tns:secret_key_encryption_cipher_padding" />
+				</xsd:sequence>
+			</xsd:choice>
+			<xsd:element ref="tns:clear_payload" minOccurs="0" />
+			<xsd:element ref="tns:encrypted_payload" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

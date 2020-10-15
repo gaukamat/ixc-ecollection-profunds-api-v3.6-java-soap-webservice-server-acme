@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<secure_request>
+	<secure_payload>20afd3718ef00256a2b2de31e2e...</secure_payload>
+	<secure_encoding>base64</secure_encoding>
+	<security_config>
+		<secret_gen>RUNTIME</secret_gen> <!-- STATIC -->
+		<!-- Either secure_secret_key or secret_key_alias. Never both ! -->
+		<secret_key_alias>acme-des-256</secret_key_alias>	<!-- STATIC only -->
+
+		<!-- RUNTIME only -->
+		<secure_secret_key>20afd3718ef00256a2b2de31e2e...</secure_secret_key> 
+		<secret_security_config>
+			<cipher_algo>RSA</cipher_algo>
+			<cipher_mode>None</cipher_mode>
+			<cipher_padding>PKCS1Padding</cipher_padding>
+			<cipher_iv>00256a2</cipher_iv> <!-- A secure random number in plain text. -->
+			<public_key_alias>acme-rsa-1024</public_key_alias>
+		</secret_security_config>
+		
+		<cipher_algo>AES</cipher_algo>
+		<cipher_mode>ECB</cipher_mode>
+		<cipher_padding>PKCS1Padding</cipher_padding>
+		<cipher_iv>2343312313</cipher_iv> <!-- A secure random number in plain text. -->
+	</security_config>
+</secure_request>

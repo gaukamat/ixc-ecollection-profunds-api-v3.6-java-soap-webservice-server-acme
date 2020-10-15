@@ -1,0 +1,88 @@
+package com.icicibank.test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.xml.ws.WebServiceException;
+
+import org.apache.xml.security.c14n.CanonicalizationException;
+import org.apache.xml.security.c14n.Canonicalizer;
+import org.apache.xml.security.c14n.InvalidCanonicalizerException;
+import org.apache.xml.security.parser.XMLParserException;
+
+import com.icicibank.ws.configrity.intimation.util.MessageSecurityHelper;
+
+public class ValidateChecksum {
+
+	// static String t1 = "<ns2:intimation_response xmlns:ns2=\"http://www.icicibank.com/api/acme\" xmlns=\"http://www.icicibank.com/api/acme-ext\" xmlns:ns3=\"http://www.icicibank.com/api/acme/configrity/compact\" xmlns:ns4=\"http://www.icicibank.com/api/acme-wrap\"><ns2:api_version>1.2.0</ns2:api_version><ns2:response_id>EF3F3DB4-99A2-4D89-AAD5-40E23664C715</ns2:response_id><ns2:response_datetime>2020-10-27T07:57:09.537Z</ns2:response_datetime><ns2:request_id>2F3CF852-23D9-4757-9196-91125999C766</ns2:request_id><ns2:request_datetime>2020-10-27T13:27:09.410+05:30</ns2:request_datetime><ns2:sender_system_id>Profunds</ns2:sender_system_id><ns2:sender_system_user_id>raman.kumar@icicibank.com</ns2:sender_system_user_id><ns2:request_priority>3</ns2:request_priority><ns2:original_request_id>9109BD8B-627C-4A0D-8779-AE85AD01E47B</ns2:original_request_id><ns2:original_request_datetime>2020-10-27T12:27:09.410</ns2:original_request_datetime><ns2:original_sender_system_id>Profunds</ns2:original_sender_system_id><ns2:original_sender_system_user_id>prachi.j@icicibank.com</ns2:original_sender_system_user_id><ns2:original_request_priority>4</ns2:original_request_priority><ns2:client_code>ACME</ns2:client_code><ns2:virtual_account_number>ADANX031192399</ns2:virtual_account_number><ns2:transaction_amount>28800.00</ns2:transaction_amount><ns2:currency_code>INR</ns2:currency_code><ns2:payment_mode>NEFT</ns2:payment_mode><ns2:transaction_id>202010271</ns2:transaction_id><ns2:transaction_id_type>UTR</ns2:transaction_id_type><ns2:transaction_datetime>2020-10-27T13:21:59.410</ns2:transaction_datetime><ns2:sender_name>Tryion Lannister</ns2:sender_name><ns2:sender_account_number>0710107844276</ns2:sender_account_number><ns2:sender_bank_name>SBI</ns2:sender_bank_name><ns2:sender_ifsc_code>SBIN0000710</ns2:sender_ifsc_code><ns2:client_account_name>Adani Petrochemicals</ns2:client_account_name><ns2:client_account_number>0081202280775</ns2:client_account_number><ns2:client_bank_name>ICICI</ns2:client_bank_name><ns2:client_ifsc_code>ICIC0000008</ns2:client_ifsc_code><ns2:narration_1>Narration 1</ns2:narration_1><ns2:narration_2>Narration 2</ns2:narration_2><ns2:informational_message>A quick brown fox jumped over the lazy dog !</ns2:informational_message><ns2:client_data_ext><InternalTransactionId:InternalTransactionId xmlns=\"http://www.acme.com/api-services/icici-collection-api\" xmlns:InternalTransactionId=\"http://www.acme.com/api-services/icici-collection-api\">TRANX-REF-04BD7939-8EFA-4EF5-B9C0-69784CD35B02</InternalTransactionId:InternalTransactionId></ns2:client_data_ext><ns2:completion_code>0</ns2:completion_code><ns2:reason_code>XC00202I</ns2:reason_code><ns2:message>OK.</ns2:message><ns2:retry_indicator>false</ns2:retry_indicator></ns2:intimation_response>";
+	// static String t1 = "<tns:intimation_response xmlns:tns=\"http://www.icicibank.com/api/acme\" xmlns=\"http://www.icicibank.com/api/acme-ext\" xmlns:acmens=\"http://www.icicibank.com/api/acme/configrity/compact\" xmlns:ns4=\"http://www.icicibank.com/api/acme-wrap\"><tns:api_version>1.2.0</tns:api_version><tns:response_id>EF3F3DB4-99A2-4D89-AAD5-40E23664C715</tns:response_id><tns:response_datetime>2020-10-27T07:57:09.537Z</tns:response_datetime><tns:request_id>2F3CF852-23D9-4757-9196-91125999C766</tns:request_id><tns:request_datetime>2020-10-27T13:27:09.410+05:30</tns:request_datetime><tns:sender_system_id>Profunds</tns:sender_system_id><tns:sender_system_user_id>raman.kumar@icicibank.com</tns:sender_system_user_id><tns:request_priority>3</tns:request_priority><tns:original_request_id>9109BD8B-627C-4A0D-8779-AE85AD01E47B</tns:original_request_id><tns:original_request_datetime>2020-10-27T12:27:09.410</tns:original_request_datetime><tns:original_sender_system_id>Profunds</tns:original_sender_system_id><tns:original_sender_system_user_id>prachi.j@icicibank.com</tns:original_sender_system_user_id><tns:original_request_priority>4</tns:original_request_priority><tns:client_code>ACME</tns:client_code><tns:virtual_account_number>ADANX031192399</tns:virtual_account_number><tns:transaction_amount>28800.00</tns:transaction_amount><tns:currency_code>INR</tns:currency_code><tns:payment_mode>NEFT</tns:payment_mode><tns:transaction_id>202010271</tns:transaction_id><tns:transaction_id_type>UTR</tns:transaction_id_type><tns:transaction_datetime>2020-10-27T13:21:59.410</tns:transaction_datetime><tns:sender_name>Tryion Lannister</tns:sender_name><tns:sender_account_number>0710107844276</tns:sender_account_number><tns:sender_bank_name>SBI</tns:sender_bank_name><tns:sender_ifsc_code>SBIN0000710</tns:sender_ifsc_code><tns:client_account_name>Adani Petrochemicals</tns:client_account_name><tns:client_account_number>0081202280775</tns:client_account_number><tns:client_bank_name>ICICI</tns:client_bank_name><tns:client_ifsc_code>ICIC0000008</tns:client_ifsc_code><tns:narration_1>Narration 1</tns:narration_1><tns:narration_2>Narration 2</tns:narration_2><tns:informational_message>A quick brown fox jumped over the lazy dog !</tns:informational_message><tns:client_data_ext><InternalTransactionId:InternalTransactionId xmlns=\"http://www.acme.com/api-services/icici-collection-api\" xmlns:InternalTransactionId=\"http://www.acme.com/api-services/icici-collection-api\">TRANX-REF-04BD7939-8EFA-4EF5-B9C0-69784CD35B02</InternalTransactionId:InternalTransactionId></tns:client_data_ext><tns:completion_code>0</tns:completion_code><tns:reason_code>XC00202I</tns:reason_code><tns:message>OK.</tns:message><tns:retry_indicator>false</tns:retry_indicator></tns:intimation_response>";
+	// static String t2 = "<ns2:intimation_response xmlns:ns4=\"http://www.icicibank.com/api/acme-wrap\" xmlns=\"http://www.icicibank.com/api/acme-ext\" xmlns:ns2=\"http://www.icicibank.com/api/acme\" xmlns:ns3=\"http://www.icicibank.com/api/acme/configrity/compact\"><ns2:api_version>1.2.0</ns2:api_version><ns2:response_id>EF3F3DB4-99A2-4D89-AAD5-40E23664C715</ns2:response_id><ns2:response_datetime>2020-10-27T07:57:09.537Z</ns2:response_datetime><ns2:request_id>2F3CF852-23D9-4757-9196-91125999C766</ns2:request_id><ns2:request_datetime>2020-10-27T13:27:09.410+05:30</ns2:request_datetime><ns2:sender_system_id>Profunds</ns2:sender_system_id><ns2:sender_system_user_id>raman.kumar@icicibank.com</ns2:sender_system_user_id><ns2:request_priority>3</ns2:request_priority><ns2:original_request_id>9109BD8B-627C-4A0D-8779-AE85AD01E47B</ns2:original_request_id><ns2:original_request_datetime>2020-10-27T12:27:09.410</ns2:original_request_datetime><ns2:original_sender_system_id>Profunds</ns2:original_sender_system_id><ns2:original_sender_system_user_id>prachi.j@icicibank.com</ns2:original_sender_system_user_id><ns2:original_request_priority>4</ns2:original_request_priority><ns2:client_code>ACME</ns2:client_code><ns2:virtual_account_number>ADANX031192399</ns2:virtual_account_number><ns2:transaction_amount>28800.00</ns2:transaction_amount><ns2:currency_code>INR</ns2:currency_code><ns2:payment_mode>NEFT</ns2:payment_mode><ns2:transaction_id>202010271</ns2:transaction_id><ns2:transaction_id_type>UTR</ns2:transaction_id_type><ns2:transaction_datetime>2020-10-27T13:21:59.410</ns2:transaction_datetime><ns2:sender_name>Tryion Lannister</ns2:sender_name><ns2:sender_account_number>0710107844276</ns2:sender_account_number><ns2:sender_bank_name>SBI</ns2:sender_bank_name><ns2:sender_ifsc_code>SBIN0000710</ns2:sender_ifsc_code><ns2:client_account_name>Adani Petrochemicals</ns2:client_account_name><ns2:client_account_number>0081202280775</ns2:client_account_number><ns2:client_bank_name>ICICI</ns2:client_bank_name><ns2:client_ifsc_code>ICIC0000008</ns2:client_ifsc_code><ns2:narration_1>Narration 1</ns2:narration_1><ns2:narration_2>Narration 2</ns2:narration_2><ns2:informational_message>A quick brown fox jumped over the lazy dog !</ns2:informational_message><ns2:client_data_ext><InternalTransactionId:InternalTransactionId xmlns=\"http://www.acme.com/api-services/icici-collection-api\" xmlns:InternalTransactionId=\"http://www.acme.com/api-services/icici-collection-api\">TRANX-REF-04BD7939-8EFA-4EF5-B9C0-69784CD35B02</InternalTransactionId:InternalTransactionId></ns2:client_data_ext><ns2:completion_code>0</ns2:completion_code><ns2:reason_code>XC00202I</ns2:reason_code><ns2:message>OK.</ns2:message><ns2:retry_indicator>false</ns2:retry_indicator></ns2:intimation_response>";
+	
+	static String t1 = "<ns2:intimation_response xmlns=\"http://www.icicibank.com/api/acme-ext\" xmlns:ns2=\"http://www.icicibank.com/api/acme\" xmlns:ns3=\"http://www.icicibank.com/api/acme/configrity/compact\" xmlns:ns4=\"http://www.icicibank.com/api/acme-wrap\"><ns2:api_version>1.2.0</ns2:api_version><ns2:response_id>E5AF75D6-A6C6-49D4-9991-4260A0A1889C</ns2:response_id><ns2:response_datetime>2020-10-27T10:47:31.214Z</ns2:response_datetime><ns2:request_id>02FAB79C-CEC2-4543-907E-0A1679E6EBE7</ns2:request_id><ns2:request_datetime>2020-10-27T16:17:30.973+05:30</ns2:request_datetime><ns2:sender_system_id>Profunds</ns2:sender_system_id><ns2:sender_system_user_id>raman.kumar@icicibank.com</ns2:sender_system_user_id><ns2:request_priority>3</ns2:request_priority><ns2:original_request_id>E3E9F3FB-7B68-4E3A-91DC-215933056680</ns2:original_request_id><ns2:original_request_datetime>2020-10-27T15:17:30.974</ns2:original_request_datetime><ns2:original_sender_system_id>Profunds</ns2:original_sender_system_id><ns2:original_sender_system_user_id>prachi.j@icicibank.com</ns2:original_sender_system_user_id><ns2:original_request_priority>4</ns2:original_request_priority><ns2:client_code>ACME</ns2:client_code><ns2:virtual_account_number>ADANX031192399</ns2:virtual_account_number><ns2:transaction_amount>28800.00</ns2:transaction_amount><ns2:currency_code>INR</ns2:currency_code><ns2:payment_mode>NEFT</ns2:payment_mode><ns2:transaction_id>202010271</ns2:transaction_id><ns2:transaction_id_type>UTR</ns2:transaction_id_type><ns2:transaction_datetime>2020-10-27T16:12:20.974</ns2:transaction_datetime><ns2:sender_name>Tryion Lannister</ns2:sender_name><ns2:sender_account_number>0710107844276</ns2:sender_account_number><ns2:sender_bank_name>SBI</ns2:sender_bank_name><ns2:sender_ifsc_code>SBIN0000710</ns2:sender_ifsc_code><ns2:client_account_name>Adani Petrochemicals</ns2:client_account_name><ns2:client_account_number>0081202280775</ns2:client_account_number><ns2:client_bank_name>ICICI</ns2:client_bank_name><ns2:client_ifsc_code>ICIC0000008</ns2:client_ifsc_code><ns2:narration_1>Narration 1</ns2:narration_1><ns2:narration_2>Narration 2</ns2:narration_2><ns2:informational_message>A quick brown fox jumped over the lazy dog !</ns2:informational_message><ns2:client_data_ext><InternalTransactionId:InternalTransactionId xmlns=\"http://www.acme.com/api-services/icici-collection-api\" xmlns:InternalTransactionId=\"http://www.acme.com/api-services/icici-collection-api\">TRANX-REF-CEA5CFC4-E9AB-4C04-8886-1816EB38B772</InternalTransactionId:InternalTransactionId></ns2:client_data_ext><ns2:completion_code>0</ns2:completion_code><ns2:reason_code>XC00202I</ns2:reason_code><ns2:message>OK.</ns2:message><ns2:retry_indicator>false</ns2:retry_indicator></ns2:intimation_response>";
+	static String t2 = "<ns2:intimation_response xmlns:ns2=\"http://www.icicibank.com/api/acme\"><ns2:api_version>1.2.0</ns2:api_version><ns2:response_id>E5AF75D6-A6C6-49D4-9991-4260A0A1889C</ns2:response_id><ns2:response_datetime>2020-10-27T10:47:31.214Z</ns2:response_datetime><ns2:request_id>02FAB79C-CEC2-4543-907E-0A1679E6EBE7</ns2:request_id><ns2:request_datetime>2020-10-27T16:17:30.973+05:30</ns2:request_datetime><ns2:sender_system_id>Profunds</ns2:sender_system_id><ns2:sender_system_user_id>raman.kumar@icicibank.com</ns2:sender_system_user_id><ns2:request_priority>3</ns2:request_priority><ns2:original_request_id>E3E9F3FB-7B68-4E3A-91DC-215933056680</ns2:original_request_id><ns2:original_request_datetime>2020-10-27T15:17:30.974</ns2:original_request_datetime><ns2:original_sender_system_id>Profunds</ns2:original_sender_system_id><ns2:original_sender_system_user_id>prachi.j@icicibank.com</ns2:original_sender_system_user_id><ns2:original_request_priority>4</ns2:original_request_priority><ns2:client_code>ACME</ns2:client_code><ns2:virtual_account_number>ADANX031192399</ns2:virtual_account_number><ns2:transaction_amount>28800.00</ns2:transaction_amount><ns2:currency_code>INR</ns2:currency_code><ns2:payment_mode>NEFT</ns2:payment_mode><ns2:transaction_id>202010271</ns2:transaction_id><ns2:transaction_id_type>UTR</ns2:transaction_id_type><ns2:transaction_datetime>2020-10-27T16:12:20.974</ns2:transaction_datetime><ns2:sender_name>Tryion Lannister</ns2:sender_name><ns2:sender_account_number>0710107844276</ns2:sender_account_number><ns2:sender_bank_name>SBI</ns2:sender_bank_name><ns2:sender_ifsc_code>SBIN0000710</ns2:sender_ifsc_code><ns2:client_account_name>Adani Petrochemicals</ns2:client_account_name><ns2:client_account_number>0081202280775</ns2:client_account_number><ns2:client_bank_name>ICICI</ns2:client_bank_name><ns2:client_ifsc_code>ICIC0000008</ns2:client_ifsc_code><ns2:narration_1>Narration 1</ns2:narration_1><ns2:narration_2>Narration 2</ns2:narration_2><ns2:informational_message>A quick brown fox jumped over the lazy dog !</ns2:informational_message><ns2:client_data_ext><InternalTransactionId:InternalTransactionId xmlns:InternalTransactionId=\"http://www.acme.com/api-services/icici-collection-api\">TRANX-REF-CEA5CFC4-E9AB-4C04-8886-1816EB38B772</InternalTransactionId:InternalTransactionId></ns2:client_data_ext><ns2:completion_code>0</ns2:completion_code><ns2:reason_code>XC00202I</ns2:reason_code><ns2:message>OK.</ns2:message><ns2:retry_indicator>false</ns2:retry_indicator></ns2:intimation_response>";
+	
+	public static void main(String[] args) {
+		String t1Hash = MessageSecurityHelper.hash("MD5", t1.getBytes());
+		String t2Hash = MessageSecurityHelper.hash("MD5", t2.getBytes());
+		
+		System.out.println("T1 Hash: " + t1Hash + ", T2 Hash: " + t2Hash + ", Hash Equals ? " + t1Hash.equals(t2Hash) + ", String Equals ? " + t1.equals(t2));
+
+		String nodeSetXPath = null;
+		Map<String, String> namespacesMap = null;
+//		namespacesMap = new HashMap<String, String>();
+
+//		namespacesMap.put("acmeNS1", "http://www.icicibank.com/api/acme");
+//		namespacesMap.put("acmeNS2", "http://www.icicibank.com/api/acme-ext");
+//		namespacesMap.put("acmeNS3", "http://www.icicibank.com/api/acme/configrity/compact");
+//		namespacesMap.put("acmeNS4", "http://www.icicibank.com/api/acme-wrap");
+
+		String t1c = canonicalizeXml(t1, MessageSecurityHelper.XML_DSIG_CANONICAL_METHOD_C14N1, nodeSetXPath, namespacesMap);
+		String t2c = canonicalizeXml(t2, MessageSecurityHelper.XML_DSIG_CANONICAL_METHOD_C14N1, nodeSetXPath, namespacesMap);
+		
+		System.out.println("t1c: " + t1c);
+		System.out.println("t2c: " + t2c);
+		
+		String t1cHash = MessageSecurityHelper.hash("MD5", t1c.getBytes());
+		String t2cHash = MessageSecurityHelper.hash("MD5", t2c.getBytes());
+		
+		System.out.println("[Canonical-NS] T1 Hash: " + t1cHash + ", T2 Hash: " + t2cHash + ", Hash Equals ? " + t1cHash.equals(t2cHash) + ", String Equals ? " + t1c.equals(t2c));
+		
+		String t1cn = canonicalizeXml(t1, MessageSecurityHelper.XML_DSIG_CANONICAL_METHOD_C14N1_EXCLUSIVE, null, null);
+		String t2cn = canonicalizeXml(t2, MessageSecurityHelper.XML_DSIG_CANONICAL_METHOD_C14N1_EXCLUSIVE, null, null);
+
+		System.out.println("t1cn: " + t1cn);
+		System.out.println("t2cn: " + t2cn);
+
+		String t1cnHash = MessageSecurityHelper.hash("MD5", t1cn.getBytes());
+		String t2cnHash = MessageSecurityHelper.hash("MD5", t2cn.getBytes());
+		
+		System.out.println("[Canonical-Null NS] T1 Hash: " + t1cnHash + ", T2 Hash: " + t2cnHash + ", Hash Equals ? " + t1cnHash.equals(t2cnHash) + ", String Equals ? " + t1cn.equals(t2cn));
+
+		String t1cn2 = canonicalizeXml(t1, MessageSecurityHelper.XML_DSIG_CANONICAL_METHOD_C14N2, null, null);
+		String t2cn2 = canonicalizeXml(t2, MessageSecurityHelper.XML_DSIG_CANONICAL_METHOD_C14N2, null, null);
+
+		System.out.println("t1cn2: " + t1cn2);
+		System.out.println("t2cn2: " + t2cn2);
+
+		String t1cn2Hash = MessageSecurityHelper.hash("MD5", t1cn2.getBytes());
+		String t2cn2Hash = MessageSecurityHelper.hash("MD5", t2cn2.getBytes());
+		
+		System.out.println("[Canonical-Null NS] T1 Hash: " + t1cn2Hash + ", T2 Hash: " + t2cn2Hash + ", Hash Equals ? " + t1cn2Hash.equals(t2cn2Hash) + ", String Equals ? " + t1cn2.equals(t2cn2));
+		
+	}
+	
+	public static String canonicalizeXml(String message, String canonicalAlgo, String xpath, Map<String, String> namespaces) {
+		// Option 2:
+		try {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			Canonicalizer c14n = Canonicalizer.getInstance(canonicalAlgo);
+			c14n.canonicalize(message.getBytes(), baos, false);
+			return baos.toString();
+		} 
+		catch (InvalidCanonicalizerException | XMLParserException | CanonicalizationException | IOException e) {
+			return null;
+		}
+	}
+}

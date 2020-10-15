@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ 	targetNamespace="http://www.icicibank.com/api/acme/configrity/compact" 
+	xmlns:tns="http://www.icicibank.com/api/acme/configrity/compact"
+	xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0" >
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jxb:schemaBindings>
+				<jxb:package name="com.icicibank.ws.configrity.model.secure.compact"></jxb:package>
+		</jxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>	
+	<xsd:simpleType name="key_sharing">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="static" />
+			<xsd:enumeration value="runtime" />
+			<xsd:enumeration value="STATIC" />
+			<xsd:enumeration value="RUNTIME" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="encoding">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="hex" />
+			<xsd:enumeration value="base64" />
+			<xsd:enumeration value="HEX" />
+			<xsd:enumeration value="BASE64" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="clear_payload" type="xsd:string" />
+	<xsd:element name="encrypted_payload" type="tns:encrypted_type" />
+	<xsd:element name="encrypted_key" type="tns:encrypted_type" />
+	<xsd:element name="iv" type="xsd:string" />
+
+	<xsd:complexType name="encrypted_type">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attributeGroup ref="tns:cipher_attrs" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:simpleType name="cipher_name_type">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\w+/\w+/\w+">
+				<xsd:annotation>
+					<xsd:documentation>DES/CBC/PKCS7Padding</xsd:documentation>
+				</xsd:annotation>
+			</xsd:pattern>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:attributeGroup name="cipher_attrs">
+		<xsd:attribute name="encoding" type="tns:encoding"
+			default="base64" />
+		<xsd:attribute name="cipher" type="tns:cipher_name_type"
+			use="required" />
+		<xsd:attribute name="iv" type="xsd:string" />
+		<xsd:attribute name="key_id" type="xsd:string" />
+	</xsd:attributeGroup>
+
+	<xsd:element name="secure_request" type="tns:secure_message_type" />
+	<xsd:element name="secure_response" type="tns:secure_message_type" />
+	<xsd:element name="secure_message" type="tns:secure_message_type" />
+
+	<xsd:complexType name="secure_message_type">
+		<xsd:sequence>
+			<xsd:element ref="tns:clear_payload" minOccurs="0" />
+			<xsd:element ref="tns:encrypted_payload" minOccurs="0" />
+			<xsd:element ref="tns:encrypted_key" minOccurs="0" />
+			<xsd:element ref="tns:iv" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

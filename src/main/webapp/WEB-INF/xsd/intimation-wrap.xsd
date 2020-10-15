@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.icicibank.com/api/acme-wrap" 
+	xmlns:tns="http://www.icicibank.com/api/acme-wrap" 
+	xmlns:common="http://www.icicibank.com/api/acme-ext" 
+	xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0">
+	<xsd:import namespace="http://www.icicibank.com/api/acme-ext" schemaLocation="common-ext.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jxb:schemaBindings>
+				<jxb:package name="com.icicibank.ws.configrity.model.wrap"></jxb:package>
+			</jxb:schemaBindings>
+		</xsd:appinfo>
+	</xsd:annotation>	
+	<!-- 
+	<xsd:simpleType name="request_priority_type">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	 -->
+
+	<xsd:element name="api_version" type="xsd:string" />
+	
+	<xsd:element name="request_id" type="xsd:string" />
+	<xsd:element name="request_datetime" type="xsd:string" />
+	<xsd:element name="request_priority" type="xsd:string"/>
+	<xsd:element name="parent_request_id" type="xsd:string" />
+	<xsd:element name="parent_request_datetime" type="xsd:string" />
+	<xsd:element name="sender_system_user_id" type="xsd:string" />
+	<xsd:element name="sender_system_user_id_type" type="xsd:string" />
+	<xsd:element name="resent_indicator" type="xsd:string" />
+	<xsd:element name="original_request_id" type="xsd:string" />
+	<xsd:element name="original_request_datetime" type="xsd:string" />
+	<xsd:element name="original_channel_id" type="xsd:string" />
+	<xsd:element name="original_sender_system_id" type="xsd:string" />
+	<xsd:element name="original_request_priority" type="xsd:string" />
+	<xsd:element name="original_sender_system_user_id" type="xsd:string" />
+	<xsd:element name="original_sender_system_user_id_type" type="xsd:string" />
+	<xsd:element name="sender_system_id" type="xsd:string" />
+	<xsd:element name="channel_id" type="xsd:string" />
+
+	<xsd:element name="test_indicator" type="xsd:string" />
+
+	<xsd:element name="client_code" type="xsd:string" />
+	<xsd:element name="virtual_account_number" type="xsd:string" />
+	<xsd:element name="transaction_id" type="xsd:string" />
+
+	<xsd:simpleType name="transaction_id_type_type">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="UTR"/>
+			<xsd:enumeration value="RRN"/>
+			<xsd:enumeration value="TRANID"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:element name="transaction_id_type" type="tns:transaction_id_type_type" />
+	
+	<xsd:element name="transaction_datetime" type="xsd:string" />
+	<xsd:element name="transaction_amount" type="xsd:decimal" />
+	<xsd:element name="currency_code" type="xsd:string" />
+	
+	<xsd:simpleType name="payment_mode_type">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="NEFT"/>
+			<xsd:enumeration value="RTGS"/>
+			<xsd:enumeration value="IMPS"/>
+			<xsd:enumeration value="FT"/>
+			<xsd:enumeration value="UTR"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:element name="payment_mode" type="tns:payment_mode_type" />
+
+	<xsd:element name="sender_name" type="xsd:string" />
+	<xsd:element name="sender_mobile_communication_number"
+		type="xsd:string" />
+	<xsd:element name="sender_account_number" type="xsd:string" />
+	<xsd:element name="sender_bank_name" type="xsd:string" />
+	<xsd:element name="sender_ifsc_code" type="xsd:string" />
+
+	<xsd:element name="client_account_name" type="xsd:string" />
+	<xsd:element name="client_mobile_communication_number"
+		type="xsd:string" />
+	<xsd:element name="client_account_number" type="xsd:string" />
+
+	<xsd:element name="client_bank_name" type="xsd:string" />
+	<xsd:element name="client_ifsc_code" type="xsd:string" />
+
+	<xsd:element name="narration_1" type="xsd:string" />
+	<xsd:element name="narration_2" type="xsd:string" />
+	<xsd:element name="informational_message" type="xsd:string" />
+	<xsd:element name="external_system_reference_1" type="xsd:string" />
+	<xsd:element name="external_system_reference_2" type="xsd:string" />
+
+	<xsd:complexType name="client_data_ext_type">
+		<xsd:sequence>
+			<xsd:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="client_data_ext" type="tns:client_data_ext_type" />
+
+	<xsd:element name="response_id" type="xsd:string" />
+	<xsd:element name="response_datetime" type="xsd:string" />
+	
+	<!-- 
+	<xsd:simpleType name="completion_code_type">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="0"/> 	[!** Successful **]
+			<xsd:enumeration value="1"/>	[!** Warning **]
+			<xsd:enumeration value="2"/>	[!** Error **]
+		</xsd:restriction>
+	</xsd:simpleType>
+	 -->
+
+	<xsd:element name="completion_code" type="xsd:string" />
+	<xsd:element name="reason_code" type="xsd:string" />
+	<xsd:element name="message" type="xsd:string" />
+
+	<xsd:element name="retry_indicator" type="xsd:string" />
+	<xsd:element name="retry_after_interval" type="xsd:string" />
+	<xsd:element name="retry_after_datetime" type="xsd:string" />
+
+	<xsd:element name="intimation_request" type="tns:intimation_requestType" />
+	<xsd:element name="intimation_response" type="tns:intimation_responseType" />
+
+	<xsd:group name="requestHeaderType">
+		<xsd:sequence>
+			<xsd:element ref="tns:request_id" />
+			<xsd:element ref="tns:request_datetime" />
+			<xsd:element ref="tns:parent_request_id" minOccurs="0"/>
+			<xsd:element ref="tns:parent_request_datetime" minOccurs="0"/>
+			<xsd:element ref="tns:channel_id" minOccurs="0"/>
+			<xsd:element ref="tns:sender_system_id" minOccurs="0"/>
+			<xsd:element ref="tns:sender_system_user_id" minOccurs="0"/>
+			<xsd:element ref="tns:sender_system_user_id_type" minOccurs="0"/>
+			<xsd:element ref="tns:request_priority" minOccurs="0"/>
+			<xsd:element ref="tns:resent_indicator" minOccurs="0"/>
+			<xsd:element ref="tns:original_request_id" minOccurs="0"/>
+			<xsd:element ref="tns:original_request_datetime" minOccurs="0"/>
+			<xsd:element ref="tns:original_channel_id" minOccurs="0"/>
+			<xsd:element ref="tns:original_sender_system_id" minOccurs="0"/>
+			<xsd:element ref="tns:original_sender_system_user_id" minOccurs="0"/>
+			<xsd:element ref="tns:original_sender_system_user_id_type" minOccurs="0"/>
+			<xsd:element ref="tns:original_request_priority" minOccurs="0"/>
+			<xsd:element ref="tns:test_indicator" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+
+	<xsd:group name="responseHeaderType">
+		<xsd:sequence>
+			<xsd:element ref="tns:response_id" />
+			<xsd:element ref="tns:response_datetime"/>
+			<xsd:group ref="tns:requestHeaderType"/>
+		</xsd:sequence>
+	</xsd:group>
+
+	<xsd:group name="responseTrailerType">
+		<xsd:sequence>
+			<xsd:element ref="tns:completion_code" />
+			<xsd:element ref="tns:reason_code" minOccurs="0"/>
+			<xsd:element ref="tns:message" minOccurs="0"/>
+			<xsd:element ref="tns:retry_indicator" minOccurs="0"/>
+			<xsd:element ref="tns:retry_after_datetime" minOccurs="0"/>
+			<xsd:element ref="tns:retry_after_interval" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+
+	<xsd:complexType name="intimation_requestType">
+		<xsd:sequence>
+			<xsd:element ref="tns:api_version" minOccurs="0" />
+			<xsd:group ref="common:API-Authentication-FieldsGroup" minOccurs="0"/>			
+			<xsd:group ref="common:API-Integrity-FieldGroup" minOccurs="0"/>			
+			<xsd:group ref="tns:requestHeaderType"/>			
+			<xsd:element ref="tns:client_code" />
+			<xsd:element ref="tns:virtual_account_number" />
+			<xsd:element ref="tns:transaction_amount" />
+			<xsd:element ref="tns:currency_code" />
+			<xsd:element ref="tns:payment_mode" />
+			<xsd:element ref="tns:transaction_id" />
+			<xsd:element ref="tns:transaction_id_type" />
+			<xsd:element ref="tns:transaction_datetime" />
+			<xsd:element ref="tns:sender_name" />
+			<xsd:element ref="tns:sender_mobile_communication_number" minOccurs="0"/>
+			<xsd:element ref="tns:sender_account_number" />
+			<xsd:element ref="tns:sender_bank_name" minOccurs="0"/>
+			<xsd:element ref="tns:sender_ifsc_code" />
+			<xsd:element ref="tns:client_account_name" minOccurs="0"/>
+			<xsd:element ref="tns:client_mobile_communication_number" minOccurs="0"/>
+			<xsd:element ref="tns:client_account_number" />
+			<xsd:element ref="tns:client_bank_name"  minOccurs="0"/>
+			<xsd:element ref="tns:client_ifsc_code"  minOccurs="0"/>
+			<xsd:element ref="tns:narration_1" minOccurs="0"/>
+			<xsd:element ref="tns:narration_2" minOccurs="0"/>
+			<xsd:element ref="tns:informational_message" minOccurs="0"/>
+			<xsd:element ref="tns:external_system_reference_1" minOccurs="0"/>
+			<xsd:element ref="tns:external_system_reference_2" minOccurs="0"/>
+			<xsd:element ref="tns:client_data_ext" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="intimation_responseType">
+		<xsd:sequence>
+			<xsd:element ref="tns:api_version" minOccurs="0" />
+			<xsd:group ref="tns:responseHeaderType"/>
+			<xsd:element ref="tns:client_code" minOccurs="0"/>
+			<xsd:element ref="tns:virtual_account_number" minOccurs="0"/>
+			<xsd:element ref="tns:transaction_amount" minOccurs="0"/>
+			<xsd:element ref="tns:currency_code" minOccurs="0"/>
+			<xsd:element ref="tns:payment_mode" minOccurs="0"/>
+			<xsd:element ref="tns:transaction_id" minOccurs="0"/>
+			<xsd:element ref="tns:transaction_id_type" minOccurs="0"/>
+			<xsd:element ref="tns:transaction_datetime" minOccurs="0"/>
+			<xsd:element ref="tns:sender_name" minOccurs="0"/>
+			<xsd:element ref="tns:sender_mobile_communication_number" minOccurs="0"/>
+			<xsd:element ref="tns:sender_account_number" minOccurs="0"/>
+			<xsd:element ref="tns:sender_bank_name" minOccurs="0"/>
+			<xsd:element ref="tns:sender_ifsc_code" minOccurs="0"/>
+			<xsd:element ref="tns:client_account_name" minOccurs="0"/>
+			<xsd:element ref="tns:client_mobile_communication_number" minOccurs="0"/>
+			<xsd:element ref="tns:client_account_number" minOccurs="0"/>
+			<xsd:element ref="tns:client_bank_name"  minOccurs="0"/>
+			<xsd:element ref="tns:client_ifsc_code"  minOccurs="0"/>
+			<xsd:element ref="tns:narration_1" minOccurs="0"/>
+			<xsd:element ref="tns:narration_2" minOccurs="0"/>
+			<xsd:element ref="tns:informational_message" minOccurs="0"/>
+			<xsd:element ref="tns:external_system_reference_1" minOccurs="0"/>
+			<xsd:element ref="tns:external_system_reference_2" minOccurs="0"/>
+			<xsd:element ref="tns:client_data_ext" minOccurs="0"/>
+			<xsd:group ref="tns:responseTrailerType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<!--  Refund / Reversal -->
+	<xsd:element name="remitter_account_number" type="xsd:string" />
+	<xsd:element name="cms_reference_number" type="xsd:string" />
+	<xsd:element name="refund_payment_status" type="xsd:string" />
+	<xsd:element name="refund_code" type="xsd:string" />
+	<xsd:element name="refund_rejection_code" type="xsd:string" />
+	
+	<xsd:element name="refund_intimation_request" type="tns:refund_intimation_requestType" />
+	<xsd:element name="refund_intimation_response" type="tns:refund_intimation_responseType" />
+	
+	<xsd:complexType name="refund_intimation_requestType">
+		<xsd:sequence>
+			<xsd:element ref="tns:api_version" minOccurs="0" />
+			<xsd:group ref="common:API-Authentication-FieldsGroup" minOccurs="0"/>			
+			<xsd:group ref="common:API-Integrity-FieldGroup" minOccurs="0"/>			
+			<xsd:group ref="tns:requestHeaderType"/>
+			<xsd:element ref="tns:client_code" />
+			<xsd:element ref="tns:virtual_account_number" />
+			<xsd:element ref="tns:transaction_amount" />
+			<xsd:element ref="tns:currency_code" />
+			<xsd:element ref="tns:payment_mode" />
+			<xsd:element ref="tns:transaction_id" />
+			<xsd:element ref="tns:transaction_id_type" />
+			<xsd:element ref="tns:transaction_datetime" />
+			<xsd:element ref="tns:sender_name" />
+			<xsd:element ref="tns:sender_mobile_communication_number" minOccurs="0"/>
+			<xsd:element ref="tns:sender_account_number" />
+			<xsd:element ref="tns:sender_bank_name" minOccurs="0"/>
+			<xsd:element ref="tns:sender_ifsc_code" />
+			<xsd:element ref="tns:client_account_name" minOccurs="0"/>
+			<xsd:element ref="tns:client_mobile_communication_number" minOccurs="0"/>
+			<xsd:element ref="tns:client_account_number" />
+			<xsd:element ref="tns:client_bank_name"  minOccurs="0"/>
+			<xsd:element ref="tns:client_ifsc_code"  minOccurs="0"/>
+			<xsd:element ref="tns:narration_1" minOccurs="0"/>
+			<xsd:element ref="tns:narration_2" minOccurs="0"/>
+			<xsd:element ref="tns:informational_message" minOccurs="0"/>
+			<xsd:element ref="tns:external_system_reference_1" minOccurs="0"/>
+			<xsd:element ref="tns:external_system_reference_2" minOccurs="0"/>
+			<xsd:element ref="tns:remitter_account_number"/>
+			<xsd:element ref="tns:cms_reference_number"/>
+			<xsd:element ref="tns:refund_payment_status"/>
+			<xsd:choice>
+				<xsd:element ref="tns:refund_code"/>
+				<xsd:element ref="tns:refund_rejection_code"/>
+			</xsd:choice>
+			<xsd:element ref="tns:client_data_ext" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="refund_intimation_responseType">
+		<xsd:sequence>
+			<xsd:element ref="tns:api_version" minOccurs="0"/>
+			<xsd:group ref="tns:responseHeaderType"/>
+			<xsd:element ref="tns:client_code" minOccurs="0"/>
+			<xsd:element ref="tns:virtual_account_number" minOccurs="0"/>
+			<xsd:element ref="tns:transaction_amount" minOccurs="0"/>
+			<xsd:element ref="tns:currency_code" minOccurs="0"/>
+			<xsd:element ref="tns:payment_mode" minOccurs="0"/>
+			<xsd:element ref="tns:transaction_id" minOccurs="0"/>
+			<xsd:element ref="tns:transaction_id_type" minOccurs="0"/>
+			<xsd:element ref="tns:transaction_datetime" minOccurs="0"/>
+			<xsd:element ref="tns:sender_name" minOccurs="0"/>
+			<xsd:element ref="tns:sender_mobile_communication_number" minOccurs="0"/>
+			<xsd:element ref="tns:sender_account_number" minOccurs="0"/>
+			<xsd:element ref="tns:sender_bank_name" minOccurs="0"/>
+			<xsd:element ref="tns:sender_ifsc_code" minOccurs="0"/>
+			<xsd:element ref="tns:client_account_name" minOccurs="0"/>
+			<xsd:element ref="tns:client_mobile_communication_number" minOccurs="0"/>
+			<xsd:element ref="tns:client_account_number" minOccurs="0"/>
+			<xsd:element ref="tns:client_bank_name"  minOccurs="0"/>
+			<xsd:element ref="tns:client_ifsc_code"  minOccurs="0"/>
+			<xsd:element ref="tns:narration_1" minOccurs="0"/>
+			<xsd:element ref="tns:narration_2" minOccurs="0"/>
+			<xsd:element ref="tns:informational_message" minOccurs="0"/>
+			<xsd:element ref="tns:external_system_reference_1" minOccurs="0"/>
+			<xsd:element ref="tns:external_system_reference_2" minOccurs="0"/>
+			<xsd:element ref="tns:remitter_account_number"/>
+			<xsd:element ref="tns:cms_reference_number"/>
+			<xsd:element ref="tns:refund_payment_status"/>
+			<xsd:choice>
+				<xsd:element ref="tns:refund_code"/>
+				<xsd:element ref="tns:refund_rejection_code"/>
+			</xsd:choice>
+			<xsd:element ref="tns:client_data_ext" minOccurs="0"/>
+			<xsd:group ref="tns:responseTrailerType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

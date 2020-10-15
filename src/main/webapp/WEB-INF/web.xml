@@ -29,9 +29,11 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>IntimationWS</servlet-name>
-		<url-pattern>/ws/eCollection/ACME</url-pattern>
+		<url-pattern>/ws/simple/eCollection/ACME</url-pattern>
+		<url-pattern>/ws/wrap/eCollection/ACME</url-pattern>
+		<url-pattern>/ws/compact/eCollection/ACME</url-pattern>
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>60</session-timeout>
-	</session-config>  
+	</session-config>
 </web-app>
