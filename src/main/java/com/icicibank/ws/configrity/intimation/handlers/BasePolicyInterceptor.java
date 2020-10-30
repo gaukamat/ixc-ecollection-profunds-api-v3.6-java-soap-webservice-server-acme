@@ -391,6 +391,7 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 				log.info("Setup the Xml Binding Context needed to replace pre-processed (decrypted / encrypted) message body in the inbound / outbound message.");
 			} 
  			catch (JAXBException e) {
+				log.error("Xml Binding Context is needed to replace pre-processed (decrypted / encrypted) message body in the inbound / outbound message.", e);
  				throw new WebServiceException("Xml Binding Context is needed to replace pre-processed (decrypted / encrypted) message body in the inbound / outbound message.", e);
 			}
 		}
@@ -411,8 +412,10 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 			return o;
 		} 
  		catch (SOAPException e) {
- 			throw new WebServiceException("Failed to unmarshall node " + messageContext + " to type \"" + clazz.getName() + "\". "
- 					+ "Could not get to the message payload (first child) within SOAP Body.", e);
+ 			String errorMessage = "Failed to unmarshall node " + messageContext + " to type \"" + clazz.getName() + "\". "
+ 					+ "Could not get to the message payload (first child) within SOAP Body.";
+			log.error(errorMessage, e);
+ 			throw new WebServiceException(errorMessage, e);
 		}
 	}
  	
@@ -427,7 +430,9 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 			return entity;
 		} 
  		catch (JAXBException e) {
- 			throw new WebServiceException("Failed to unmarshall node " + node + " to type \"" + clazz.getName() + "\".", e);
+ 			String errorMessage = "Failed to unmarshall node " + node + " to type \"" + clazz.getName() + "\".";
+			log.error(errorMessage, e);
+ 			throw new WebServiceException(errorMessage, e);
 		}
 	}
 
@@ -632,6 +637,7 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 			log.info("New business payload " + newBusinessPayload + " injected in SOAP Body.");
 		} 
 		catch (SOAPException | JAXBException e) {
+			log.error("Failed to inject (replace) the new business payload in the SOAP body.", e);
 			throw new WebServiceException("Failed to inject (replace) the new business payload in the SOAP body.", e);
 		}
 	
@@ -654,6 +660,7 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 			log.info("New business payload " + newBusinessPayload + " injected in SOAP Body.");
 		} 
 		catch (SOAPException e) {
+			log.error("Failed to inject (replace) the new business payload in the SOAP body.", e);
 			throw new WebServiceException("Failed to inject (replace) the new business payload in the SOAP body.", e);
 		}
 	}
@@ -735,8 +742,10 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 			return key;
 		} 
 		catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException e) {
-			throw new WebServiceException("Unable to access the private / secret key bound to \"" + keyId + "\". "
-					+ "Key may/may not be present within the web services keystore or may be of a different type (Public Key Cert instead of a Secret / Private Key).");
+			String errorMessage = "Unable to access the private / secret key bound to \"" + keyId + "\". "
+					+ "Key may/may not be present within the web services keystore or may be of a different type (Public Key Cert instead of a Secret / Private Key).";
+			log.error(errorMessage, e);
+			throw new WebServiceException(errorMessage);
 		}
 	}
 
@@ -750,8 +759,10 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 			return key;
 		} 
 		catch (KeyStoreException e) {
-			throw new WebServiceException("Unable to access the public key cert bound to \"" + keyId + "\". "
-					+ "Key may/may not be present within the web services keystore or may be of a different type (Secret / Private Key instead of a Public Key Cert).");
+			String errorMessage = "Unable to access the public key cert bound to \"" + keyId + "\". "
+					+ "Key may/may not be present within the web services keystore or may be of a different type (Secret / Private Key instead of a Public Key Cert).";
+			log.error(errorMessage, e);
+			throw new WebServiceException(errorMessage, e);
 		}
 	}
 }

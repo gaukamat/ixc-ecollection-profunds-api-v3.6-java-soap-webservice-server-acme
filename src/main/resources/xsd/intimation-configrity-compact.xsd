@@ -51,8 +51,7 @@
 	</xsd:simpleType>
 
 	<xsd:attributeGroup name="cipher_attrs">
-		<xsd:attribute name="encoding" type="tns:encoding"
-			default="base64" />
+		<xsd:attribute name="encoding" type="tns:encoding" />
 		<xsd:attribute name="cipher" type="tns:cipher_name_type"
 			use="required" />
 		<xsd:attribute name="iv" type="xsd:string" />
@@ -62,6 +61,9 @@
 	<xsd:element name="secure_request" type="tns:secure_message_type" />
 	<xsd:element name="secure_response" type="tns:secure_message_type" />
 	<xsd:element name="secure_message" type="tns:secure_message_type" />
+
+	<xsd:element name="intimation_request" type="tns:secure_message_type" />
+	<xsd:element name="intimation_response" type="tns:secure_message_type" />
 
 	<xsd:complexType name="secure_message_type">
 		<xsd:sequence>

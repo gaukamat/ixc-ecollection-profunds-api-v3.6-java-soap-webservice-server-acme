@@ -48,13 +48,14 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 			String SECURE_ENVELOPE_VERSION						= "secure-envelope-version";		 				// compact-v3
 			String SECURE_ENVELOPE_REQUEST_NAME			= "secure-envelope-request-name";			// intimation_request
 			String SECURE_ENVELOPE_RESPONSE_NAME		= "secure-envelope-response-name";			// intimation_response
-			String PAYLOAD_ENCRYPTION_CIPHER 					= "payload-encryption-cipher";		 				// DESede/CBC/PKCS5Padding
+			String PAYLOAD_ENCRYPTION_CIPHER 					= "payload-encryption-cipher";		 			// DESede/CBC/PKCS5Padding
 			String PAYLOAD_ENCRYPTION_KEY_ALIAS 			= "payload-encryption-key-alias"; 				// acme-3des-168
 			String SECRETKEY_ENCRYPTION_CIPHER				= "secretkey-encryption-cipher"; 					// RSA/ECB/PKCS1Padding
 			String SECRETKEY_DECRYPTION_KEY_ALIAS 		= "secretkey-decryption-key-alias"; 			// acme-rsa-1024
 			String SECRETKEY_ENCRYPTION_KEY_ALIAS 		= "secretkey-encryption-key-alias"; 			// ixc-rsa-1024
 			String ENCRYPTION_ENCODING 								= "encryption-encoding"; 								// base64
 			String ENCRYPTION_KEY_TYPE								= "encryption-key-type";
+			String NAMESPACE_INJECTION_HACK					= "namespace-injection";								// true
 		}
 		
 		interface Type {
@@ -76,7 +77,6 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 		String messageVersion = policyDefaults.getProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.SECURE_ENVELOPE_VERSION);
 
 		Properties requestContextProperties  =  new Properties();
-		
 		if(!messageVersion.equals("compact-v3")) {
 			throw new WebServiceException("Unsupported message version. Check the Policy Configuration.");
 		}
@@ -106,8 +106,11 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 		requestContextProperties.setProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.ENCRYPTION_ENCODING, finalEncoding);
 		
 		String encodedIV = encryptedBusinessPayload.getIv();
-		if(encodedIV == null) {
-			throw new WebServiceException("IV not found. IV is used with the symmteric key to encrypt/decrypt the business message payload.");
+		if(encodedIV == null) { // iv attribute on tns:encrypted_payload, first priority
+			encodedIV = intimationRequest.getIv();
+			if(encodedIV == null) { // tns:iv 
+				throw new WebServiceException("IV not found. IV is used with the symmteric key to encrypt/decrypt the business message payload.");
+			}
 		}
 		// Build the confidentiality context.
 		requestContextProperties.setProperty(ENCODED_IV_KEY, encodedIV);
@@ -144,6 +147,7 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 				log.info("Payload decrypted using a pre-shared symmetric key.");
 			} 
 			catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException e) {
+				log.error("Unable decrypt the business message payload.", e);
 				throw new WebServiceException("Unable decrypt the business message payload.", e);
 			}
 		}
@@ -190,17 +194,33 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 														encryptedRequest, finalEncoding, 
 														pCipherSpec[0],pCipherSpec[1],pCipherSpec[2],
 														MessageSecurityHelper.encode(MessageSecurityHelper.decode(encodedIV, finalEncoding), "hex"));
-					
+				
 				intimationRequest.setClearPayload(clearPayload);
 			} 
 			catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException e) {
+				log.error("Unable decrypt the secret key and hence the business message payload.", e);
 				throw new WebServiceException("Unable decrypt the secret key and hence the business message payload.", e);
 			}
 		}
 		
 		// We have a clear payload with us.
+		
+		// Hack: Injecting xmlns="http://www.icicibank.com/api/acme-wrap" 
+		// The test samples being used were created for REST XML and hence without a namespace. 
+		// Namespace is required for proper dispatch.
+		
+		Boolean applyNamespaceInjectionHack = Boolean.parseBoolean(policyDefaults.getProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.NAMESPACE_INJECTION_HACK));
+		log.warn("Namespace inject hack " + (applyNamespaceInjectionHack ? "will be applied." : "will not be applied."));
+		if(applyNamespaceInjectionHack) {
+			log.warn("Namespace inject hack applied. No-namespace declaration xmlns=\"http://www.icicibank.com/api/acme-wrap\" will be injected into the top-level \"intimation_request\" element.");
+			String clearPayload = intimationRequest.getClearPayload();
+			clearPayload = clearPayload.replace("<intimation_request>", "<intimation_request xmlns=\"http://www.icicibank.com/api/acme-wrap\">");
+			intimationRequest.setClearPayload(clearPayload);
+		}
+		
 		log.info("Clear Payload: [" +  intimationRequest.getClearPayload() + "]");
-		log.info("Converting clear payload into IntimationRequest wrapper type.");
+		log.info("Unmarshalling clear payload into IntimationRequest wrapper object.");
+		
 		try {
 			JAXBElement<IntimationRequestType> clearIntimationRequest = 
 					getXmlBindingContext().createUnmarshaller().unmarshal(
@@ -210,6 +230,7 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 			log.info("Clear payload converted into IntimationRequest wrapper type and set as the new business payload.");
 		} 
 		catch (JAXBException e) {
+			log.error("Unable to process the clear business message payload.", e);
 			throw new WebServiceException("Unable to process the clear business message payload.", e);
 		}
 		
@@ -219,12 +240,14 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 
  	public boolean handleResponse(SOAPMessageContext messageContext) {
 		info("Payload confidentiality enforced for this response. "
-				+ "Clear message (\"clear_payload\")  will be encrypted and set in the response (\"encrypted_response\") before forwarding.");
+				+ "Clear message (\"clear_payload\") will be encrypted and set in the response (\"encrypted_response\") before forwarding.");
 
 		Properties requestContextProperties = (Properties)messageContext.get(MESSAGE_SECURITY_CONTEXT_KEY);
 		if(requestContextProperties == null) {
 			throw new WebServiceException("Unable to determine the message security context to be applied to the response message.");
 		}
+		
+		log.info("Message Security Context: " + requestContextProperties);
 		
 		String clearPayload = toMessageBodyString(messageContext);
 		log.info("Clear Payload: [" + clearPayload + "]");
@@ -243,20 +266,24 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 		String [] finalPCipherSpec = finalPCipher.split("/");
 		
 		String  finalKCipher 	= requestContextProperties.getProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.SECRETKEY_ENCRYPTION_CIPHER);
-		String [] finalKCipherSpec = finalKCipher.split("/");
+		String [] finalKCipherSpec = (finalKCipher == null ? null : finalKCipher.split("/"));
 
+		String finalKEKeyId = requestContextProperties.getProperty(PayloadConfidentialityValidatorConstants.
+				ConfigurationParameters.SECRETKEY_ENCRYPTION_KEY_ALIAS);
+		
 		// Public key of the API consumer.
-		Key finalKEKey;
-		try {
-			finalKEKey = getWebServicesKeyStore().getCertificate(
-														requestContextProperties.getProperty(PayloadConfidentialityValidatorConstants.
-																										ConfigurationParameters.SECRETKEY_ENCRYPTION_KEY_ALIAS)).getPublicKey();
-		} 
-		catch (KeyStoreException kse) {
-			throw new WebServiceException("Unable to encrypt the response.  Public key of the API consumer not found.", kse);
+		Key finalKEKey = null;
+		if(finalKEKeyId != null) {
+			try {
+				finalKEKey = getWebServicesKeyStore().getCertificate(finalKEKeyId).getPublicKey();
+			} 
+			catch (KeyStoreException kse) {
+				log.error("Unable to encrypt the response.  Public key of the API consumer not found.", kse);
+				throw new WebServiceException("Unable to encrypt the response.  Public key of the API consumer not found.", kse);
+			}
 		}
 
-		log.info("Public key of the API consumer will be used to encrypt the symmetric key if its not a pre-shared one. "
+		log.info("Public key \"" + finalKEKeyId + "\" of the API consumer will be used to encrypt the symmetric key if its not a pre-shared one. "
 				+ "If the symmetric key is pre-shared, it wont be passed in the message and hence no question of encrypting it."); 
 		
 		String finalPEKeyId = requestContextProperties.getProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.PAYLOAD_ENCRYPTION_KEY_ALIAS);
@@ -269,21 +296,20 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 			log.info("Not pre-shared. New symmetric key is created for every request. (\"runtime\") and "
 					+ "sent to the API consumer in the message payload, encrypted (using API consumer public key) & encoded. ");
 			
-			Long skl = MessageSecurityHelper.getKeySize(finalKCipherSpec[0]);
-			finalPEKey = MessageSecurityHelper.genKey(finalKCipherSpec[0], skl);
+			Long skl = MessageSecurityHelper.getKeySize(finalPCipherSpec[0]);
+			finalPEKey = MessageSecurityHelper.genKey(finalPCipherSpec[0], skl);
 
-			info("[RUNTIME SECRET KEY]: " + skl +" bits runtime symmetric key for " + finalKCipherSpec[0] + " cipher created.");
+			info("[RUNTIME SECRET KEY]: " + skl +" bits runtime symmetric key for " + finalPCipherSpec[0] + " cipher created.");
 			
 			String encryptedKey = MessageSecurityHelper.encryptEncodedMessageWithKey(finalKEKey, 			// public key of the API consumer
 													MessageSecurityHelper.encode(finalPEKey.getEncoded(), finalEncoding),		// secret key is the very thing we are encrypting
 													finalKCipherSpec[0], finalKCipherSpec[1], finalKCipherSpec[2], finalEncoding, null, null);
 			
-			
 			info("Encrypted & encoded symmetric key to be used for payload encryption: [" + encryptedKey + "]");
 			
 			EncryptedType encryptedSymmKey = of.createEncryptedType();
-			encryptedSymmKey.setValue(encryptedKey);
-
+			encryptedSymmKey.setValue(encryptedKey);			// symmetric key (generated at runtime) that will be used to encrypt the payload
+			encryptedSymmKey.setKeyId(finalKEKeyId);			// public key of the API consumer
 			encryptedSymmKey.setCipher(finalKCipher);			// asymmetric key cipher
 			encryptedSymmKey.setEncoding(finalEncoding);		// single encoding across the message
 			encryptedSymmKey.setIv(null);		// the symmetric key is encrypted using public asymm key and does not need an IV. 
@@ -304,7 +330,7 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 				info("Symmetric key bound to  " + finalPEKeyId + " found and will be used to encrypt the response.");
 			} 
 			catch (UnrecoverableKeyException | KeyStoreException | NoSuchAlgorithmException e) {
-				severe("Unable to encrypt the response. [Root Cause: " + e + "]");
+				log.error("Unable to encrypt the response. Pre-shared symmetric key not found.", e);
 				throw new WebServiceException("Unable to encrypt the response. Pre-shared symmetric key not found.",  e);
 			}
 
@@ -342,7 +368,7 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 
 	@Override
 	protected void initPolicy() {
-		setPolicyName("PayloadConfidentialityValidator");
+		setPolicyName("CompactPayloadsConfidentialityValidator");
 		String policyDefaultsFileName = "policy-defaults/payload-confidentiality-validator-defaults.properties";
 		policyDefaults = loadPolicyConfiguration(policyDefaultsFileName);
 
@@ -360,6 +386,7 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 			policyDefaults.setProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.SECRETKEY_DECRYPTION_KEY_ALIAS, 	"acme-rsa-1024");
 			policyDefaults.setProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.SECRETKEY_ENCRYPTION_KEY_ALIAS, 	"ixc-rsa-1024");
 			policyDefaults.setProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.ENCRYPTION_ENCODING, 							"base64");
+			policyDefaults.setProperty(PayloadConfidentialityValidatorConstants.ConfigurationParameters.NAMESPACE_INJECTION_HACK, 				"true");
 			
 			warn("Defaulting to hard-fixed defaults. [" + policyDefaults + "]");
 		}

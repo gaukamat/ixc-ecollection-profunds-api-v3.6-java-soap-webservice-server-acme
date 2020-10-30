@@ -38,7 +38,7 @@ REM ###########
 SET DEPLOYMENT_IMAGE_NAME=gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme
 SET DEPLOYMENT_IMAGE_TAG=2.0.0-configrity-payload-confi-only-hex
 SET DEPLOYMENT_CONTAINER_NAME=ecol_configrity_kumonosu
-SET PUBLISHED_API_PORT=7736
+SET PUBLISHED_API_PORT=9836
 
 REM #Check what containers are running.
 docker container ls    
