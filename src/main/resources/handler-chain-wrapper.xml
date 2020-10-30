@@ -12,10 +12,16 @@
 			<javaee:handler-name>UserAuthentication</javaee:handler-name>
 			<javaee:handler-class>com.icicibank.ws.configrity.intimation.handlers.UserAuthentication</javaee:handler-class>
 		</javaee:handler>
+		<!-- Either SimpleConfidentialityValidator or PayloadConfidentialityValidator should be configured for policy-engagement. Never both. -->
 		<javaee:handler>
 			<!-- Decrypt request / Encrypt response field data (All fields & Selected fields - configuration driven).  -->
 			<javaee:handler-name>SimpleConfidentialityValidator</javaee:handler-name>
 			<javaee:handler-class>com.icicibank.ws.configrity.intimation.handlers.SimpleConfidentialityValidator</javaee:handler-class>
+		</javaee:handler>
+		<javaee:handler>
+			<!-- Decrypt request / Encrypt response (configuration driven).  -->
+			<javaee:handler-name>PayloadConfidentialityValidator</javaee:handler-name>
+			<javaee:handler-class>com.icicibank.ws.configrity.intimation.handlers.CompactPayloadsConfidentialityValidator</javaee:handler-class>
 		</javaee:handler>
 		<javaee:handler>
 			<!-- Audit request / response messages.  -->

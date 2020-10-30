@@ -15,7 +15,7 @@
 		<javaee:handler>
 			<!-- Decrypt request / Encrypt response (configuration driven).  -->
 			<javaee:handler-name>PayloadConfidentialityValidator</javaee:handler-name>
-			<javaee:handler-class>com.icicibank.ws.configrity.intimation.handlers.PayloadConfidentialityValidator</javaee:handler-class>
+			<javaee:handler-class>com.icicibank.ws.configrity.intimation.handlers.CompactPayloadsConfidentialityValidator</javaee:handler-class>
 		</javaee:handler>
 		<javaee:handler>
 			<!-- Audit request / response messages.  -->

@@ -7,6 +7,8 @@ docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-integrity-fields-curlybraces-soap-header
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-integrity-fields-curlybraces-message-body
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-integrity-fields-curlybraces-http-header
+
+
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-integrity-payload-noxmldecl-message-body-custom-auth-soap-header
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-integrity-payload-noxmldecl-message-body-custom-auth-message-body
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-integrity-payload-noxmldecl-message-body-custom-auth-http-header
@@ -19,6 +21,7 @@ docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-custom-auth-http-header
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-basic-auth
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity
+
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-simple-confi-only-selectfields-symm
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-simple-confi-only-selectfields-symm-morefields
 docker push gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme:2.0.0-configrity-simple-confi-only-selectfields-symm-hex
