@@ -3862,7 +3862,7 @@ if(api_gateway == &quot;true&quot;) {
         </BackendListener>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Mock-MainThreadGroup" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Mock-MainThreadGroup" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -4035,7 +4035,7 @@ if(api_gateway == &quot;true&quot;) {
             </elementProp>
             <elementProp name="ixc_api_endpoint_port_number" elementType="Argument">
               <stringProp name="Argument.name">ixc_api_endpoint_port_number</stringProp>
-              <stringProp name="Argument.value">${__P(ixc_api_endpoint_port_number, 9936)}</stringProp>
+              <stringProp name="Argument.value">${__P(ixc_api_endpoint_port_number, 8080)}</stringProp>
               <stringProp name="Argument.desc">Tomcat: Local: 8080, Container: 9936 (V 3.6) (SOAP WS), IBM ACE Local: 7800</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
@@ -4077,14 +4077,19 @@ if(api_gateway == &quot;true&quot;) {
         <hashTree/>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="SOAP / XML (Web Services)" enabled="true"/>
         <hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Valid-Requests-Plain Vanilla" enabled="false"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Valid-Requests-Plain Vanilla" enabled="true"/>
           <hashTree>
             <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User-Defined-Variables-Environment" enabled="true">
               <collectionProp name="Arguments.arguments">
+                <elementProp name="ixc_api_intimation_uri-inactive" elementType="Argument">
+                  <stringProp name="Argument.name">ixc_api_intimation_uri-inactive</stringProp>
+                  <stringProp name="Argument.value">ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/simple/eCollection/ACME</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
                 <elementProp name="ixc_api_intimation_uri" elementType="Argument">
                   <stringProp name="Argument.name">ixc_api_intimation_uri</stringProp>
-                  <stringProp name="Argument.value">${__P(ixc_api_intimation_uri, ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity/ws/simple/eCollection/ACME)}</stringProp>
-                  <stringProp name="Argument.desc">Example: /api/eCollection/mis/ACME/remitter-validation-intermediary-account/intimate</stringProp>
+                  <stringProp name="Argument.value">ixc-ecollection-profunds-api-v3.6-java-soap-webservice/ws/simple/eCollection/ACME</stringProp>
+                  <stringProp name="Argument.desc">Debug</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -7940,9 +7945,9 @@ if(api_gateway == &quot;true&quot;) {
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="All Fields-Preconfigured Defaults" enabled="false"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="All Fields-Preconfigured Defaults" enabled="true"/>
             <hashTree>
-              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Asymmetric-Base64" enabled="false"/>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Asymmetric-Base64" enabled="true"/>
               <hashTree>
                 <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="BASIC Simple_ST_RSA_ECB_PKCS1Padding_acme-rsa-1024" enabled="true">
                   <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -8424,7 +8429,7 @@ if(api_gateway == &quot;true&quot;) {
                 <hashTree/>
               </hashTree>
             </hashTree>
-            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Select Fields-Preconfigured Defaults" enabled="true"/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Select Fields-Preconfigured Defaults" enabled="false"/>
             <hashTree>
               <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Asymmetric-Base64" enabled="false"/>
               <hashTree>
@@ -8981,7 +8986,7 @@ if(api_gateway == &quot;true&quot;) {
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Mock-MainThreadGroup-3-Compact-V3" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Mock-MainThreadGroup-3-Compact-V3" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -9085,7 +9090,7 @@ if(api_gateway == &quot;true&quot;) {
           <hashTree/>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Runtime-AES-CBC-PKCS7-Base64" enabled="true"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FirstAttempt-AES-CBC-PKCS7Padding-RUNTIME_BASE64.xml" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FirstAttempt-AES-CBC-PKCS7Padding-RUNTIME_BASE64.xml" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -9121,7 +9126,7 @@ if(api_gateway == &quot;true&quot;) {
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
             <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FirstAttempt-TransactionAccepted-AES-CBC-PKCS7Padding-RUNTIME_BASE64.xml" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FirstAttempt-TransactionAccepted-AES-CBC-PKCS7Padding-RUNTIME_BASE64.xml" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -9191,7 +9196,7 @@ if(api_gateway == &quot;true&quot;) {
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
             <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ResentRequest-AES-CBC-PKCS7Padding-RUNTIME_BASE64.xml" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ResentRequest-AES-CBC-PKCS7Padding-RUNTIME_BASE64.xml" enabled="false">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -9373,7 +9378,7 @@ xmlns:xtn=&quot;http://www.icicibank.com/api/acme-ext&quot;&gt;&#xd;
             </HTTPSamplerProxy>
             <hashTree/>
           </hashTree>
-          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Static-AES-CBC-PKCS7-Base64" enabled="true"/>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Static-AES-CBC-PKCS7-Base64" enabled="false"/>
           <hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="FirstAttempt-AES-CBC-PKCS7Padding-Static_BASE64.xml" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>

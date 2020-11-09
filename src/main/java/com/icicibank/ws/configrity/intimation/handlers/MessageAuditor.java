@@ -3,6 +3,8 @@ package com.icicibank.ws.configrity.intimation.handlers;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.xml.namespace.QName;
@@ -24,17 +26,20 @@ public class MessageAuditor extends BasePolicyInterceptor
 		super();
 	}
 	public boolean handleRequest(SOAPMessageContext messageContext) {
+		logHttpHeaders(messageContext);
 		 log(messageContext);
 		return true;
 	}
 
 	public boolean handleResponse(SOAPMessageContext messageContext) {
-		 log(messageContext);
+		logHttpHeaders(messageContext);
+		log(messageContext);
 		return true;
 	}
 
 	public boolean handleFault(SOAPMessageContext messageContext) {
-		 log(messageContext);
+		logHttpHeaders(messageContext);
+		log(messageContext);
 		return true;
 	}
 
@@ -44,7 +49,24 @@ public class MessageAuditor extends BasePolicyInterceptor
 	public Set<QName> getHeaders() {
 		return Collections.EMPTY_SET;
 	}
-
+	
+	private void logHttpHeaders(SOAPMessageContext messageContext) {
+		Boolean isOutbound = (Boolean)messageContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
+		
+		String messageLabel = (isOutbound ? "response" : "request");
+		
+		Map<String, List<String>> httpHeaders = null;
+		
+		if(isOutbound) {
+			httpHeaders = (Map<String, List<String>>) messageContext.get(MessageContext.HTTP_RESPONSE_HEADERS);
+		}
+		else {
+			httpHeaders = (Map<String, List<String>>) messageContext.get(MessageContext.HTTP_REQUEST_HEADERS);
+		}
+		
+		log.info(messageLabel.toUpperCase() + " HTTP Headers: " + httpHeaders);
+	}
+	
 	private void log(SOAPMessageContext messageContext) {
 		SOAPMessage msg = messageContext.getMessage(); 
 		Boolean isOutbound = (Boolean)messageContext.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);

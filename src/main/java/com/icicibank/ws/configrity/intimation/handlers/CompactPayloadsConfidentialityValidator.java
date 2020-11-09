@@ -361,7 +361,7 @@ import com.icicibank.ws.configrity.model.wrap.IntimationRequestType;
 				SecureMessageType.class, intimationResponse);
 		
 		setNewBusinessPayload(messageContext, compactV3IntimationResponse);
-		log.info("Clear payload converted into IntimationRequest wrapper type and set as the new business payload.");
+		log.info("Clear payload converted into IntimationResponse wrapper type and set as the new business payload.");
 		
 		return true;
 	}

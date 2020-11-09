@@ -4,12 +4,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.icici.xc.api</groupId>
 	<artifactId>ixc-ecollection-profunds-api-v3.6-java-soap-webservice</artifactId>
 	<version>2.0.0-configrity</version>
 	<packaging>war</packaging>
-
 	<name>ixc-ecollection-profunds-api-v3.6-java-soap-webservice Maven Webapp</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
@@ -84,8 +82,6 @@
 			<version>2.2.0</version>
 		</dependency>
 		<!-- ********** ********** ********** ********** ********** ********** -->
-
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -93,7 +89,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<resources>
 	        <resource>
@@ -131,7 +126,7 @@
 			            </compilerArg>
 			        </compilerArgs>	                
 	            </configuration>
-	        </plugin>
+	        </plugin> 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxws-maven-plugin</artifactId>

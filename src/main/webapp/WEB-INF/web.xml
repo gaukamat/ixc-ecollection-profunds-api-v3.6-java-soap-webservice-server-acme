@@ -30,7 +30,13 @@
 	<servlet-mapping>
 		<servlet-name>IntimationWS</servlet-name>
 		<url-pattern>/ws/simple/eCollection/ACME</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>IntimationWS</servlet-name>
 		<url-pattern>/ws/wrap/eCollection/ACME</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>IntimationWS</servlet-name>
 		<url-pattern>/ws/compact/eCollection/ACME</url-pattern>
 	</servlet-mapping>
 	<session-config>

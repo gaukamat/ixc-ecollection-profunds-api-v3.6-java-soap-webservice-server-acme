@@ -634,6 +634,9 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 
 			getXmlBindingContext().createMarshaller().marshal(newBusinessPayload, soapBody);
 			
+			messageContext.getMessage().saveChanges();
+			log.info("Business payload saved.");
+
 			log.info("New business payload " + newBusinessPayload + " injected in SOAP Body.");
 		} 
 		catch (SOAPException | JAXBException e) {
@@ -656,6 +659,9 @@ public abstract class BasePolicyInterceptor implements SOAPHandler<SOAPMessageCo
 			
 			Node adoptedNewBusinessPayload = soapBody.getFirstChild().getOwnerDocument().adoptNode(newBusinessPayload);
 			soapBody.replaceChild(adoptedNewBusinessPayload, oldBusinessPayload);
+
+			messageContext.getMessage().saveChanges();
+			log.info("Business payload saved.");
 
 			log.info("New business payload " + newBusinessPayload + " injected in SOAP Body.");
 		} 
