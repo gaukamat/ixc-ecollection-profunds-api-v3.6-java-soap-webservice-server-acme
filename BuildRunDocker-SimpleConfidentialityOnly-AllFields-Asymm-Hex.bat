@@ -36,7 +36,7 @@ ECHO Local Docker Deployment
 REM ###########
 
 SET DEPLOYMENT_IMAGE_NAME=gaukamat/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-acme
-SET DEPLOYMENT_IMAGE_TAG=2.0.0-configrity-simple-confi-only-allfields-asymm
+SET DEPLOYMENT_IMAGE_TAG=2.0.0-configrity-simple-confi-only-allfields-asymm-hex
 SET DEPLOYMENT_CONTAINER_NAME=ecol_configrity_kumonosu
 SET PUBLISHED_API_PORT=9936
 

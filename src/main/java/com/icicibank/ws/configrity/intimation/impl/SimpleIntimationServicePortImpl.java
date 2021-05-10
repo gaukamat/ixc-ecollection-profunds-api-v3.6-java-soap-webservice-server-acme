@@ -87,6 +87,19 @@ public class SimpleIntimationServicePortImpl implements SimpleIntimationServiceP
 		String transactionId = intimationRequest.getTransactionId();
 		log.warn("Transaction ID \"" + transactionId + "\" would be used to determine the fate of this request.");
 		
+		if(transactionId.endsWith("999")) {
+			log.warn(">>>>>>>>>> Request with transaction ID \"" + transactionId + "\" ends with 999. This request will be held back for some time.");
+			synchronized(this) {
+			try { 
+				Thread.currentThread().sleep(1000*6); 
+			}
+			catch (InterruptedException e) { 
+				log.warn(">>>>>>>>>> Interrupted: " + e); 
+			}
+			log.warn(">>>>>>>>>> Request with transaction ID \"" + transactionId + "\" was held back. It is now released. Response will be returned shortly.");
+			}
+		}
+
 		String reasonCode = apiHelper.getTransactionReasonCode(transactionId);
 
 		log.warn("Request with Transaction ID \"" + transactionId + "\" is mapped to a response with reason code: \"" + 

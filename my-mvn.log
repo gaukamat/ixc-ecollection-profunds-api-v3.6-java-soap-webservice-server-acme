@@ -1,0 +1,487 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --< com.icici.xc.api:ixc-ecollection-profunds-api-v3.6-java-soap-webservice >--
+[INFO] Building ixc-ecollection-profunds-api-v3.6-java-soap-webservice Maven Webapp 2.0.0-configrity
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ ixc-ecollection-profunds-api-v3.6-java-soap-webservice ---
+[INFO] Deleting C:\Workspaces\workspace-sts\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme\target
+[INFO] 
+[INFO] --- jaxws-maven-plugin:2.6:wsimport (default) @ ixc-ecollection-profunds-api-v3.6-java-soap-webservice ---
+[INFO] Processing: file:/C:/Workspaces/workspace-sts/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme/src/main/resources/wsdl/intimation-configrity.wsdl
+[INFO] jaxws:wsimport args: [-keep, -s, 'C:\Workspaces\workspace-sts\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme\target\generated-sources\wsimport', -d, 'C:\Workspaces\workspace-sts\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme\target\classes', -verbose, -encoding, UTF-8, -Xnocompile, -target, 2.1, "file:/C:/Workspaces/workspace-sts/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme/src/main/resources/wsdl/intimation-configrity.wsdl"]
+parsing WSDL...
+
+
+
+Generating code...
+
+com\icicibank\ws\configrity\model\ClientDataExtType.java
+com\icicibank\ws\configrity\model\IntimationRequestType.java
+com\icicibank\ws\configrity\model\IntimationResponseType.java
+com\icicibank\ws\configrity\model\ObjectFactory.java
+com\icicibank\ws\configrity\model\PaymentModeType.java
+com\icicibank\ws\configrity\model\RefundIntimationRequestType.java
+com\icicibank\ws\configrity\model\RefundIntimationResponseType.java
+com\icicibank\ws\configrity\model\TransactionIdTypeType.java
+com\icicibank\ws\configrity\model\package-info.java
+com\icicibank\api\acme_ext\APIAuthorizationHeader.java
+com\icicibank\api\acme_ext\APIIntegrityHeader.java
+com\icicibank\api\acme_ext\IV.java
+com\icicibank\api\acme_ext\ObjectFactory.java
+com\icicibank\api\acme_ext\package-info.java
+com\icicibank\ws\configrity\model\secure\compact\EncryptedType.java
+com\icicibank\ws\configrity\model\secure\compact\ObjectFactory.java
+com\icicibank\ws\configrity\model\secure\compact\SecureMessageType.java
+com\icicibank\ws\configrity\model\secure\compact\package-info.java
+com\icicibank\ws\configrity\intimation\CompactV3IntimationServicePort.java
+com\icicibank\ws\configrity\intimation\IntimationConfigritySOAP11WS.java
+com\icicibank\ws\configrity\intimation\SimpleIntimationServicePort.java
+com\icicibank\ws\configrity\intimation\WrapperIntimationServicePort.java
+com\icicibank\ws\configrity\model\wrap\ClientDataExtType.java
+com\icicibank\ws\configrity\model\wrap\IntimationRequestType.java
+com\icicibank\ws\configrity\model\wrap\IntimationResponseType.java
+com\icicibank\ws\configrity\model\wrap\ObjectFactory.java
+com\icicibank\ws\configrity\model\wrap\RefundIntimationRequestType.java
+com\icicibank\ws\configrity\model\wrap\RefundIntimationResponseType.java
+com\icicibank\ws\configrity\model\wrap\TransactionIdTypeType.java
+com\icicibank\ws\configrity\model\wrap\package-info.java
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ ixc-ecollection-profunds-api-v3.6-java-soap-webservice ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 67 resources
+[INFO] Copying 30 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ ixc-ecollection-profunds-api-v3.6-java-soap-webservice ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 48 source files to C:\Workspaces\workspace-sts\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme\target\classes
+[INFO] MapStruct: Using accessor naming strategy: org.mapstruct.ap.spi.DefaultAccessorNamingStrategy
+[INFO] MapStruct: Using builder provider: org.mapstruct.ap.spi.DefaultBuilderProvider
+[INFO] MapStruct: Using enum naming strategy: org.mapstruct.ap.spi.DefaultEnumNamingStrategy
+[INFO]  MapStruct: processing: model.mapstruct.IntimationResponseWrapperMapper.
+[INFO] - MapStruct: creating bean mapping method implementation for com.icicibank.ws.configrity.model.wrap.IntimationResponseType wrap(com.icicibank.ws.configrity.model.wrap.IntimationResponseType unwrap).
+[INFO] -- MapStruct: mapping property: unwrap.getApiVersion() to: setApiVersion(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getApiVersion().
+[INFO] -- MapStruct: mapping property: unwrap.getResponseId() to: setResponseId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getResponseId().
+[INFO] -- MapStruct: mapping property: unwrap.getResponseDatetime() to: setResponseDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getResponseDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getRequestId() to: setRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRequestId().
+[INFO] -- MapStruct: mapping property: unwrap.getRequestDatetime() to: setRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRequestDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getParentRequestId() to: setParentRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getParentRequestId().
+[INFO] -- MapStruct: mapping property: unwrap.getParentRequestDatetime() to: setParentRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getParentRequestDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getChannelId() to: setChannelId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getChannelId().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderSystemId() to: setSenderSystemId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderSystemId().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderSystemUserId() to: setSenderSystemUserId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderSystemUserId().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderSystemUserIdType() to: setSenderSystemUserIdType(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderSystemUserIdType().
+[INFO] -- MapStruct: mapping property: unwrap.getRequestPriority() to: setRequestPriority(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRequestPriority().
+[INFO] -- MapStruct: mapping property: unwrap.getResentIndicator() to: setResentIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getResentIndicator().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalRequestId() to: setOriginalRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalRequestId().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalRequestDatetime() to: setOriginalRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalRequestDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalChannelId() to: setOriginalChannelId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalChannelId().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalSenderSystemId() to: setOriginalSenderSystemId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalSenderSystemId().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalSenderSystemUserId() to: setOriginalSenderSystemUserId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalSenderSystemUserId().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalSenderSystemUserIdType() to: setOriginalSenderSystemUserIdType(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalSenderSystemUserIdType().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalRequestPriority() to: setOriginalRequestPriority(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalRequestPriority().
+[INFO] -- MapStruct: mapping property: unwrap.getTestIndicator() to: setTestIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTestIndicator().
+[INFO] -- MapStruct: mapping property: unwrap.getClientCode() to: setClientCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientCode().
+[INFO] -- MapStruct: mapping property: unwrap.getVirtualAccountNumber() to: setVirtualAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getVirtualAccountNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getTransactionAmount() to: setTransactionAmount(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTransactionAmount().
+[INFO] -- MapStruct: mapping property: unwrap.getCurrencyCode() to: setCurrencyCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getCurrencyCode().
+[INFO] -- MapStruct: mapping property: unwrap.getPaymentMode() to: setPaymentMode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getPaymentMode().
+[INFO] -- MapStruct: mapping property: unwrap.getTransactionId() to: setTransactionId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTransactionId().
+[INFO] -- MapStruct: mapping property: unwrap.getTransactionIdType() to: setTransactionIdType(com.icicibank.ws.configrity.model.wrap.TransactionIdTypeType).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTransactionIdType().
+[INFO] -- MapStruct: mapping property: unwrap.getTransactionDatetime() to: setTransactionDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTransactionDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderName() to: setSenderName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderName().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderMobileCommunicationNumber() to: setSenderMobileCommunicationNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderMobileCommunicationNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderAccountNumber() to: setSenderAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderAccountNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderBankName() to: setSenderBankName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderBankName().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderIfscCode() to: setSenderIfscCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderIfscCode().
+[INFO] -- MapStruct: mapping property: unwrap.getClientAccountName() to: setClientAccountName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientAccountName().
+[INFO] -- MapStruct: mapping property: unwrap.getClientMobileCommunicationNumber() to: setClientMobileCommunicationNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientMobileCommunicationNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getClientAccountNumber() to: setClientAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientAccountNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getClientBankName() to: setClientBankName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientBankName().
+[INFO] -- MapStruct: mapping property: unwrap.getClientIfscCode() to: setClientIfscCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientIfscCode().
+[INFO] -- MapStruct: mapping property: unwrap.getNarration1() to: setNarration1(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getNarration1().
+[INFO] -- MapStruct: mapping property: unwrap.getNarration2() to: setNarration2(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getNarration2().
+[INFO] -- MapStruct: mapping property: unwrap.getInformationalMessage() to: setInformationalMessage(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getInformationalMessage().
+[INFO] -- MapStruct: mapping property: unwrap.getExternalSystemReference1() to: setExternalSystemReference1(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getExternalSystemReference1().
+[INFO] -- MapStruct: mapping property: unwrap.getExternalSystemReference2() to: setExternalSystemReference2(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getExternalSystemReference2().
+[INFO] -- MapStruct: mapping property: unwrap.getClientDataExt() to: setClientDataExt(com.icicibank.ws.configrity.model.wrap.ClientDataExtType).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientDataExt().
+[INFO] -- MapStruct: mapping property: unwrap.getCompletionCode() to: setCompletionCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getCompletionCode().
+[INFO] -- MapStruct: mapping property: unwrap.getReasonCode() to: setReasonCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getReasonCode().
+[INFO] -- MapStruct: mapping property: unwrap.getMessage() to: setMessage(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getMessage().
+[INFO] -- MapStruct: mapping property: unwrap.getRetryIndicator() to: setRetryIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRetryIndicator().
+[INFO] -- MapStruct: mapping property: unwrap.getRetryAfterDatetime() to: setRetryAfterDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRetryAfterDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getRetryAfterInterval() to: setRetryAfterInterval(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRetryAfterInterval().
+[INFO]  MapStruct: processing: model.mapstruct.IntimationRequestWrapperMapper.
+[INFO] - MapStruct: creating bean mapping method implementation for com.icicibank.ws.configrity.model.wrap.IntimationRequestType wrap(com.icicibank.ws.configrity.model.wrap.IntimationRequestType unwrap).
+[INFO] -- MapStruct: mapping property: unwrap.getApiVersion() to: setApiVersion(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getApiVersion().
+[INFO] -- MapStruct: mapping property: unwrap.getAPIUserIdToken() to: setAPIUserIdToken(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getAPIUserIdToken().
+[INFO] -- MapStruct: mapping property: unwrap.getAPIAccessToken() to: setAPIAccessToken(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getAPIAccessToken().
+[INFO] -- MapStruct: mapping property: unwrap.getMessageChecksumAlgo() to: setMessageChecksumAlgo(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getMessageChecksumAlgo().
+[INFO] -- MapStruct: mapping property: unwrap.getMessageChecksum() to: setMessageChecksum(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getMessageChecksum().
+[INFO] -- MapStruct: mapping property: unwrap.getRequestId() to: setRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRequestId().
+[INFO] -- MapStruct: mapping property: unwrap.getRequestDatetime() to: setRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRequestDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getParentRequestId() to: setParentRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getParentRequestId().
+[INFO] -- MapStruct: mapping property: unwrap.getParentRequestDatetime() to: setParentRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getParentRequestDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getChannelId() to: setChannelId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getChannelId().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderSystemId() to: setSenderSystemId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderSystemId().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderSystemUserId() to: setSenderSystemUserId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderSystemUserId().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderSystemUserIdType() to: setSenderSystemUserIdType(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderSystemUserIdType().
+[INFO] -- MapStruct: mapping property: unwrap.getRequestPriority() to: setRequestPriority(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getRequestPriority().
+[INFO] -- MapStruct: mapping property: unwrap.getResentIndicator() to: setResentIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getResentIndicator().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalRequestId() to: setOriginalRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalRequestId().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalRequestDatetime() to: setOriginalRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalRequestDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalChannelId() to: setOriginalChannelId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalChannelId().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalSenderSystemId() to: setOriginalSenderSystemId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalSenderSystemId().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalSenderSystemUserId() to: setOriginalSenderSystemUserId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalSenderSystemUserId().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalSenderSystemUserIdType() to: setOriginalSenderSystemUserIdType(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalSenderSystemUserIdType().
+[INFO] -- MapStruct: mapping property: unwrap.getOriginalRequestPriority() to: setOriginalRequestPriority(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getOriginalRequestPriority().
+[INFO] -- MapStruct: mapping property: unwrap.getTestIndicator() to: setTestIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTestIndicator().
+[INFO] -- MapStruct: mapping property: unwrap.getClientCode() to: setClientCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientCode().
+[INFO] -- MapStruct: mapping property: unwrap.getVirtualAccountNumber() to: setVirtualAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getVirtualAccountNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getTransactionAmount() to: setTransactionAmount(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTransactionAmount().
+[INFO] -- MapStruct: mapping property: unwrap.getCurrencyCode() to: setCurrencyCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getCurrencyCode().
+[INFO] -- MapStruct: mapping property: unwrap.getPaymentMode() to: setPaymentMode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getPaymentMode().
+[INFO] -- MapStruct: mapping property: unwrap.getTransactionId() to: setTransactionId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTransactionId().
+[INFO] -- MapStruct: mapping property: unwrap.getTransactionIdType() to: setTransactionIdType(com.icicibank.ws.configrity.model.wrap.TransactionIdTypeType).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTransactionIdType().
+[INFO] -- MapStruct: mapping property: unwrap.getTransactionDatetime() to: setTransactionDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getTransactionDatetime().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderName() to: setSenderName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderName().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderMobileCommunicationNumber() to: setSenderMobileCommunicationNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderMobileCommunicationNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderAccountNumber() to: setSenderAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderAccountNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderBankName() to: setSenderBankName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderBankName().
+[INFO] -- MapStruct: mapping property: unwrap.getSenderIfscCode() to: setSenderIfscCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getSenderIfscCode().
+[INFO] -- MapStruct: mapping property: unwrap.getClientAccountName() to: setClientAccountName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientAccountName().
+[INFO] -- MapStruct: mapping property: unwrap.getClientMobileCommunicationNumber() to: setClientMobileCommunicationNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientMobileCommunicationNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getClientAccountNumber() to: setClientAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientAccountNumber().
+[INFO] -- MapStruct: mapping property: unwrap.getClientBankName() to: setClientBankName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientBankName().
+[INFO] -- MapStruct: mapping property: unwrap.getClientIfscCode() to: setClientIfscCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientIfscCode().
+[INFO] -- MapStruct: mapping property: unwrap.getNarration1() to: setNarration1(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getNarration1().
+[INFO] -- MapStruct: mapping property: unwrap.getNarration2() to: setNarration2(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getNarration2().
+[INFO] -- MapStruct: mapping property: unwrap.getInformationalMessage() to: setInformationalMessage(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getInformationalMessage().
+[INFO] -- MapStruct: mapping property: unwrap.getExternalSystemReference1() to: setExternalSystemReference1(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getExternalSystemReference1().
+[INFO] -- MapStruct: mapping property: unwrap.getExternalSystemReference2() to: setExternalSystemReference2(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getExternalSystemReference2().
+[INFO] -- MapStruct: mapping property: unwrap.getClientDataExt() to: setClientDataExt(com.icicibank.ws.configrity.model.wrap.ClientDataExtType).
+[INFO] -- MapStruct: selecting property mapping: unwrap.getClientDataExt().
+[INFO]  MapStruct: processing: model.mapstruct.IntimationRequestUnwrapperMapper.
+[INFO] - MapStruct: creating bean mapping method implementation for com.icicibank.ws.configrity.model.wrap.IntimationRequestType unwrap(com.icicibank.ws.configrity.model.wrap.IntimationRequestType wrap).
+[INFO] -- MapStruct: mapping property: wrap.getApiVersion() to: setApiVersion(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getApiVersion().
+[INFO] -- MapStruct: mapping property: wrap.getAPIUserIdToken() to: setAPIUserIdToken(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getAPIUserIdToken().
+[INFO] -- MapStruct: mapping property: wrap.getAPIAccessToken() to: setAPIAccessToken(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getAPIAccessToken().
+[INFO] -- MapStruct: mapping property: wrap.getMessageChecksumAlgo() to: setMessageChecksumAlgo(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getMessageChecksumAlgo().
+[INFO] -- MapStruct: mapping property: wrap.getMessageChecksum() to: setMessageChecksum(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getMessageChecksum().
+[INFO] -- MapStruct: mapping property: wrap.getRequestId() to: setRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRequestId().
+[INFO] -- MapStruct: mapping property: wrap.getRequestDatetime() to: setRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRequestDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getParentRequestId() to: setParentRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getParentRequestId().
+[INFO] -- MapStruct: mapping property: wrap.getParentRequestDatetime() to: setParentRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getParentRequestDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getChannelId() to: setChannelId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getChannelId().
+[INFO] -- MapStruct: mapping property: wrap.getSenderSystemId() to: setSenderSystemId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderSystemId().
+[INFO] -- MapStruct: mapping property: wrap.getSenderSystemUserId() to: setSenderSystemUserId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderSystemUserId().
+[INFO] -- MapStruct: mapping property: wrap.getSenderSystemUserIdType() to: setSenderSystemUserIdType(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderSystemUserIdType().
+[INFO] -- MapStruct: mapping property: wrap.getRequestPriority() to: setRequestPriority(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRequestPriority().
+[INFO] -- MapStruct: mapping property: wrap.getResentIndicator() to: setResentIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getResentIndicator().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalRequestId() to: setOriginalRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalRequestId().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalRequestDatetime() to: setOriginalRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalRequestDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalChannelId() to: setOriginalChannelId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalChannelId().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalSenderSystemId() to: setOriginalSenderSystemId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalSenderSystemId().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalSenderSystemUserId() to: setOriginalSenderSystemUserId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalSenderSystemUserId().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalSenderSystemUserIdType() to: setOriginalSenderSystemUserIdType(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalSenderSystemUserIdType().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalRequestPriority() to: setOriginalRequestPriority(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalRequestPriority().
+[INFO] -- MapStruct: mapping property: wrap.getTestIndicator() to: setTestIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTestIndicator().
+[INFO] -- MapStruct: mapping property: wrap.getClientCode() to: setClientCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientCode().
+[INFO] -- MapStruct: mapping property: wrap.getVirtualAccountNumber() to: setVirtualAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getVirtualAccountNumber().
+[INFO] -- MapStruct: mapping property: wrap.getTransactionAmount() to: setTransactionAmount(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTransactionAmount().
+[INFO] -- MapStruct: mapping property: wrap.getCurrencyCode() to: setCurrencyCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getCurrencyCode().
+[INFO] -- MapStruct: mapping property: wrap.getPaymentMode() to: setPaymentMode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getPaymentMode().
+[INFO] -- MapStruct: mapping property: wrap.getTransactionId() to: setTransactionId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTransactionId().
+[INFO] -- MapStruct: mapping property: wrap.getTransactionIdType() to: setTransactionIdType(com.icicibank.ws.configrity.model.wrap.TransactionIdTypeType).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTransactionIdType().
+[INFO] -- MapStruct: mapping property: wrap.getTransactionDatetime() to: setTransactionDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTransactionDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getSenderName() to: setSenderName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderName().
+[INFO] -- MapStruct: mapping property: wrap.getSenderMobileCommunicationNumber() to: setSenderMobileCommunicationNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderMobileCommunicationNumber().
+[INFO] -- MapStruct: mapping property: wrap.getSenderAccountNumber() to: setSenderAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderAccountNumber().
+[INFO] -- MapStruct: mapping property: wrap.getSenderBankName() to: setSenderBankName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderBankName().
+[INFO] -- MapStruct: mapping property: wrap.getSenderIfscCode() to: setSenderIfscCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderIfscCode().
+[INFO] -- MapStruct: mapping property: wrap.getClientAccountName() to: setClientAccountName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientAccountName().
+[INFO] -- MapStruct: mapping property: wrap.getClientMobileCommunicationNumber() to: setClientMobileCommunicationNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientMobileCommunicationNumber().
+[INFO] -- MapStruct: mapping property: wrap.getClientAccountNumber() to: setClientAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientAccountNumber().
+[INFO] -- MapStruct: mapping property: wrap.getClientBankName() to: setClientBankName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientBankName().
+[INFO] -- MapStruct: mapping property: wrap.getClientIfscCode() to: setClientIfscCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientIfscCode().
+[INFO] -- MapStruct: mapping property: wrap.getNarration1() to: setNarration1(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getNarration1().
+[INFO] -- MapStruct: mapping property: wrap.getNarration2() to: setNarration2(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getNarration2().
+[INFO] -- MapStruct: mapping property: wrap.getInformationalMessage() to: setInformationalMessage(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getInformationalMessage().
+[INFO] -- MapStruct: mapping property: wrap.getExternalSystemReference1() to: setExternalSystemReference1(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getExternalSystemReference1().
+[INFO] -- MapStruct: mapping property: wrap.getExternalSystemReference2() to: setExternalSystemReference2(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getExternalSystemReference2().
+[INFO] -- MapStruct: mapping property: wrap.getClientDataExt() to: setClientDataExt(com.icicibank.ws.configrity.model.wrap.ClientDataExtType).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientDataExt().
+[INFO]  MapStruct: processing: model.mapstruct.IntimationResponseUnwrapperMapper.
+[INFO] - MapStruct: creating bean mapping method implementation for com.icicibank.ws.configrity.model.wrap.IntimationResponseType unwrap(com.icicibank.ws.configrity.model.wrap.IntimationResponseType wrap).
+[INFO] -- MapStruct: mapping property: wrap.getApiVersion() to: setApiVersion(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getApiVersion().
+[INFO] -- MapStruct: mapping property: wrap.getResponseId() to: setResponseId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getResponseId().
+[INFO] -- MapStruct: mapping property: wrap.getResponseDatetime() to: setResponseDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getResponseDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getRequestId() to: setRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRequestId().
+[INFO] -- MapStruct: mapping property: wrap.getRequestDatetime() to: setRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRequestDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getParentRequestId() to: setParentRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getParentRequestId().
+[INFO] -- MapStruct: mapping property: wrap.getParentRequestDatetime() to: setParentRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getParentRequestDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getChannelId() to: setChannelId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getChannelId().
+[INFO] -- MapStruct: mapping property: wrap.getSenderSystemId() to: setSenderSystemId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderSystemId().
+[INFO] -- MapStruct: mapping property: wrap.getSenderSystemUserId() to: setSenderSystemUserId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderSystemUserId().
+[INFO] -- MapStruct: mapping property: wrap.getSenderSystemUserIdType() to: setSenderSystemUserIdType(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderSystemUserIdType().
+[INFO] -- MapStruct: mapping property: wrap.getRequestPriority() to: setRequestPriority(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRequestPriority().
+[INFO] -- MapStruct: mapping property: wrap.getResentIndicator() to: setResentIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getResentIndicator().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalRequestId() to: setOriginalRequestId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalRequestId().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalRequestDatetime() to: setOriginalRequestDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalRequestDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalChannelId() to: setOriginalChannelId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalChannelId().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalSenderSystemId() to: setOriginalSenderSystemId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalSenderSystemId().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalSenderSystemUserId() to: setOriginalSenderSystemUserId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalSenderSystemUserId().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalSenderSystemUserIdType() to: setOriginalSenderSystemUserIdType(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalSenderSystemUserIdType().
+[INFO] -- MapStruct: mapping property: wrap.getOriginalRequestPriority() to: setOriginalRequestPriority(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getOriginalRequestPriority().
+[INFO] -- MapStruct: mapping property: wrap.getTestIndicator() to: setTestIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTestIndicator().
+[INFO] -- MapStruct: mapping property: wrap.getClientCode() to: setClientCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientCode().
+[INFO] -- MapStruct: mapping property: wrap.getVirtualAccountNumber() to: setVirtualAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getVirtualAccountNumber().
+[INFO] -- MapStruct: mapping property: wrap.getTransactionAmount() to: setTransactionAmount(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTransactionAmount().
+[INFO] -- MapStruct: mapping property: wrap.getCurrencyCode() to: setCurrencyCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getCurrencyCode().
+[INFO] -- MapStruct: mapping property: wrap.getPaymentMode() to: setPaymentMode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getPaymentMode().
+[INFO] -- MapStruct: mapping property: wrap.getTransactionId() to: setTransactionId(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTransactionId().
+[INFO] -- MapStruct: mapping property: wrap.getTransactionIdType() to: setTransactionIdType(com.icicibank.ws.configrity.model.wrap.TransactionIdTypeType).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTransactionIdType().
+[INFO] -- MapStruct: mapping property: wrap.getTransactionDatetime() to: setTransactionDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getTransactionDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getSenderName() to: setSenderName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderName().
+[INFO] -- MapStruct: mapping property: wrap.getSenderMobileCommunicationNumber() to: setSenderMobileCommunicationNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderMobileCommunicationNumber().
+[INFO] -- MapStruct: mapping property: wrap.getSenderAccountNumber() to: setSenderAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderAccountNumber().
+[INFO] -- MapStruct: mapping property: wrap.getSenderBankName() to: setSenderBankName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderBankName().
+[INFO] -- MapStruct: mapping property: wrap.getSenderIfscCode() to: setSenderIfscCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getSenderIfscCode().
+[INFO] -- MapStruct: mapping property: wrap.getClientAccountName() to: setClientAccountName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientAccountName().
+[INFO] -- MapStruct: mapping property: wrap.getClientMobileCommunicationNumber() to: setClientMobileCommunicationNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientMobileCommunicationNumber().
+[INFO] -- MapStruct: mapping property: wrap.getClientAccountNumber() to: setClientAccountNumber(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientAccountNumber().
+[INFO] -- MapStruct: mapping property: wrap.getClientBankName() to: setClientBankName(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientBankName().
+[INFO] -- MapStruct: mapping property: wrap.getClientIfscCode() to: setClientIfscCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientIfscCode().
+[INFO] -- MapStruct: mapping property: wrap.getNarration1() to: setNarration1(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getNarration1().
+[INFO] -- MapStruct: mapping property: wrap.getNarration2() to: setNarration2(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getNarration2().
+[INFO] -- MapStruct: mapping property: wrap.getInformationalMessage() to: setInformationalMessage(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getInformationalMessage().
+[INFO] -- MapStruct: mapping property: wrap.getExternalSystemReference1() to: setExternalSystemReference1(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getExternalSystemReference1().
+[INFO] -- MapStruct: mapping property: wrap.getExternalSystemReference2() to: setExternalSystemReference2(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getExternalSystemReference2().
+[INFO] -- MapStruct: mapping property: wrap.getClientDataExt() to: setClientDataExt(com.icicibank.ws.configrity.model.wrap.ClientDataExtType).
+[INFO] -- MapStruct: selecting property mapping: wrap.getClientDataExt().
+[INFO] -- MapStruct: mapping property: wrap.getCompletionCode() to: setCompletionCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getCompletionCode().
+[INFO] -- MapStruct: mapping property: wrap.getReasonCode() to: setReasonCode(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getReasonCode().
+[INFO] -- MapStruct: mapping property: wrap.getMessage() to: setMessage(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getMessage().
+[INFO] -- MapStruct: mapping property: wrap.getRetryIndicator() to: setRetryIndicator(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRetryIndicator().
+[INFO] -- MapStruct: mapping property: wrap.getRetryAfterDatetime() to: setRetryAfterDatetime(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRetryAfterDatetime().
+[INFO] -- MapStruct: mapping property: wrap.getRetryAfterInterval() to: setRetryAfterInterval(java.lang.String).
+[INFO] -- MapStruct: selecting property mapping: wrap.getRetryAfterInterval().
+[INFO] /C:/Workspaces/workspace-sts/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme/src/main/java/com/icicibank/ws/configrity/intimation/handlers/BasePolicyInterceptor.java: Some input files use unchecked or unsafe operations.
+[INFO] /C:/Workspaces/workspace-sts/ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme/src/main/java/com/icicibank/ws/configrity/intimation/handlers/BasePolicyInterceptor.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ ixc-ecollection-profunds-api-v3.6-java-soap-webservice ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 24 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ ixc-ecollection-profunds-api-v3.6-java-soap-webservice ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to C:\Workspaces\workspace-sts\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme\target\test-classes
+[WARNING] The following options were not recognized by any processor: '[mapstruct.verbose, mapstruct.suppressGeneratorVersionInfoComment, mapstruct.suppressGeneratorTimestamp]'
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.1:test (default-test) @ ixc-ecollection-profunds-api-v3.6-java-soap-webservice ---
+[INFO] 
+[INFO] --- maven-war-plugin:3.2.2:war (default-war) @ ixc-ecollection-profunds-api-v3.6-java-soap-webservice ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [ixc-ecollection-profunds-api-v3.6-java-soap-webservice] in [C:\Workspaces\workspace-sts\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme\target\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity-final]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\Workspaces\workspace-sts\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme\src\main\webapp]
+[INFO] Webapp assembled in [11570 msecs]
+[INFO] Building war: C:\Workspaces\workspace-sts\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-server-acme\target\ixc-ecollection-profunds-api-v3.6-java-soap-webservice-2.0.0-configrity-final.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:02 min
+[INFO] Finished at: 2020-12-31T20:43:40+05:30
+[INFO] ------------------------------------------------------------------------
